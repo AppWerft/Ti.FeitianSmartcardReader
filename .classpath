@@ -12,7 +12,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/IOT/FeitianSmartcardReader/android/lib/bR301_v2.0.9_release.jar"/>
-	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/IOT/FeitianSmartcardReader/android/lib/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/IOT/Ti.FeitianSmartcardReader/android/lib/ftsafe_0.7.04.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
