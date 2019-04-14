@@ -147,7 +147,6 @@ public class FeitianModule extends KrollModule {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			Log.d(LCAT, "handleMessage " + msg.what);
 			KrollDict event = new KrollDict();
 			switch (msg.what) {
 			case -1:
@@ -201,8 +200,8 @@ public class FeitianModule extends KrollModule {
 				}
 				break;
 			}
-			if (hasListeners("onConnected")) {
-				fireEvent("onConnected", event);
+			if (hasListeners("onfound")) {
+				fireEvent("onfound", event);
 			}
 		}
 	};
