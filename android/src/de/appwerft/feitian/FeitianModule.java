@@ -182,15 +182,7 @@ public class FeitianModule extends KrollModule {
 			case 0:
 				Log.d(LCAT, msg.obj.toString());
 				break;
-			case DK.USB_IN:
-				break;
-			case DK.USB_OUT:
-				break;
-			case DK.PCSCSERVER_LOG:
-				break;
-			case DK.USB_LOG:
-				event.put("type", "USB_LOG");
-				break;
+			
 			case DK.BT3_LOG:
 				Log.d(LCAT, "[BT3Log]:" + msg.obj);
 				break;
@@ -206,17 +198,20 @@ public class FeitianModule extends KrollModule {
 				break;
 			case DK.BT3_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
+				Log.d(LCAT, "Device found: " + dev1.getName());
 				String[] readerNames;
 				try {
+					Log.d(LCAT, "try readerOpen " );
 					readerNames = ftReader.readerOpen(dev1);
+					Log.d(LCAT, "readerOpened " +readerNames.length);
 					devicefound = true;
 					event.put("type", "BT3_NEW");
-				//	event.put("device", new DeviceProxy(dev1));
-					event.put("open", readerNames);
-					arrayForBlueToothDevice.add(dev1);
-					for(int i=0;i<readerNames.length;i++){
-						Log.d(LCAT,"readerNames["+i+"]:"+readerNames[i]);
-}
+					// event.put("device", new DeviceProxy(dev1));
+				//	event.put("open", readerNames);
+				//	arrayForBlueToothDevice.add(dev1);
+					for (int i = 0; i < readerNames.length; i++) {
+						Log.d(LCAT, "readerNames[" + i + "]:" + readerNames[i]);
+					}
 				} catch (FTException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
