@@ -30,47 +30,109 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
-@Kroll.module(name = "Feitiansmartcardreader", id = "de.appwerft.feitian", propertyAccessors = { "onConnect",
-		"onError" })
-public class FeitiansmartcardreaderModule extends KrollModule {
+@Kroll.module(name = "Feitian", id = "de.appwerft.feitian", propertyAccessors = { "onConnect", "onError" })
+public class FeitianModule extends KrollModule {
 
-	// Standard Debugging variables
-	public static final String LCAT = "FeitianModule";
+	public static final String LCAT = "🧩TiFeitian";
 
 	KrollDict callbacks = new KrollDict();
-	//
+
 	private FTReader ftReader;
 	private int testi = 0;
-
 	private Context ctx = TiApplication.getInstance().getApplicationContext();
-
 	Tpcsc tpcsc = null;
 
 	ArrayList<BluetoothDevice> arrayForBlueToothDevice = new ArrayList<BluetoothDevice>();
 	ArrayList<DeviceProxy> arrayForBlueToothDeviceProxy = new ArrayList<DeviceProxy>();
-	
-	// @Kroll.constant
-	// public static final String EXTERNAL_NAME = value;
 
-	public FeitiansmartcardreaderModule() {
+	@Kroll.constant
+	public static final int USB_LOG = DK.USB_LOG;
+	@Kroll.constant
+	public static final int USB_IN = DK.USB_IN;
+	@Kroll.constant
+	public static final int USB_OUT = DK.USB_OUT;
+	@Kroll.constant
+	public static final int CARD_IN_MASK = DK.CARD_IN_MASK;
+	@Kroll.constant
+	public static final int CARD_OUT_MASK = DK.CARD_OUT_MASK;
+	@Kroll.constant
+	public static final int CCIDSCHEME_LOG = DK.CCIDSCHEME_LOG;
+	@Kroll.constant
+	public static final int FTREADER_LOG = DK.FTREADER_LOG;
+	@Kroll.constant
+	public static final int PCSCSERVER_LOG = DK.PCSCSERVER_LOG;
+	@Kroll.constant
+	public static final int BT3_LOG = DK.BT3_LOG;
+	@Kroll.constant
+	public static final int BT3_NEW = DK.BT3_NEW;
+	@Kroll.constant
+	public static final int BT4_LOG = DK.BT4_LOG;
+	@Kroll.constant
+	public static final int BT4_NEW = DK.BT4_NEW;
+	@Kroll.constant
+	public static final int BT4_ACL_DISCONNECTED = DK.BT4_ACL_DISCONNECTED;
+	@Kroll.constant
+	public static final int FTREADER_TYPE_USB = DK.FTREADER_TYPE_USB;
+	@Kroll.constant
+	public static final int FTREADER_TYPE_BT3 = DK.FTREADER_TYPE_BT3;
+	@Kroll.constant
+	public static final int FTREADER_TYPE_BT4 = DK.FTREADER_TYPE_BT4;
+	@Kroll.constant
+	public static final int CARD_PRESENT_ACTIVE = DK.CARD_PRESENT_ACTIVE;
+	@Kroll.constant
+	public static final int CARD_PRESENT_INACTIVE = DK.CARD_PRESENT_INACTIVE;
+	@Kroll.constant
+	public static final int CARD_NO_PRESENT = DK.CARD_NO_PRESENT;
+	@Kroll.constant
+	public static final int READER_R301E = DK.READER_R301E;
+	@Kroll.constant
+	public static final int READER_BR301FC4 = DK.READER_BR301FC4;
+	@Kroll.constant
+	public static final int READER_BR500 = DK.READER_BR500;
+	@Kroll.constant
+	public static final int READER_R502_CL = DK.READER_R502_CL;
+	@Kroll.constant
+	public static final int READER_R502_DUAL = DK.READER_R502_DUAL;
+	@Kroll.constant
+	public static final int READER_BR301 = DK.READER_BR301;
+	@Kroll.constant
+	public static final int READER_IR301_LT = DK.READER_IR301_LT;
+	@Kroll.constant
+	public static final int READER_IR301 = DK.READER_IR301;
+	@Kroll.constant
+	public static final int READER_VR504 = DK.READER_VR504;
+	@Kroll.constant
+	public static final int READER_UNKNOW = DK.READER_UNKNOW;
+
+	public FeitianModule() {
 		super();
+		Log.d(LCAT, "Construct FeitianModule");
 	}
 
 	@Kroll.onAppCreate
 	public static void onAppCreate(TiApplication app) {
-
+		Log.d(LCAT, "onAppCreate FeitianModule");
 	}
 
 	@Kroll.method
-	public void connect() { // jar mode, BLE
-		ftReader = new FTReader(ctx, mHandler, DK.FTREADER_TYPE_BT4);
-	}
-
-	@Kroll.method
-	public KrollDict getType() { 
-		KrollDict res= new KrollDict();
+	public void find(int version) {
+		Log.d(LCAT,"new FTReader in find() " + version);
+		ftReader = new FTReader(ctx, mHandler, version);
 		try {
-			res.put("manufacturer", new String(ftReader.readerGetManufacturer())/*Utility.bytes2HexStr(manufacturer)*/);
+			Log.d(LCAT, "try readerFind");
+			ftReader.readerFind();
+			Log.d(LCAT, "readerFind");
+		} catch (FTException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Kroll.method
+	public KrollDict getType() {
+		KrollDict res = new KrollDict();
+		try {
+			res.put("manufacturer",
+					new String(ftReader.readerGetManufacturer())/* Utility.bytes2HexStr(manufacturer) */);
 			res.put("hardwareinfo", Utility.bytes2HexStr(ftReader.readerGetHardwareInfo()));
 			res.put("readername", new String(ftReader.readerGetReaderName()));
 			res.put("serialnumber", Utility.bytes2HexStr(ftReader.readerGetSerialNumber()));
@@ -81,13 +143,11 @@ public class FeitiansmartcardreaderModule extends KrollModule {
 		return null;
 	}
 
-
-	
-	
 	private Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
+			Log.d(LCAT, "handleMessage " + msg.what);
 			KrollDict event = new KrollDict();
 			switch (msg.what) {
 			case -1:
@@ -113,22 +173,23 @@ public class FeitiansmartcardreaderModule extends KrollModule {
 				// textView.append("[FTReaderLog]:"+msg.obj+"\n");
 				break;
 			case DK.CCIDSCHEME_LOG:
+				Log.d(LCAT,"\"[CCIDSchemeLog]:\"+msg.obj+");
 				// textView.append("[CCIDSchemeLog]:"+msg.obj+"\n");
 				break;
-			
+
 			case DK.BT3_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "[BT3_NEW]:" + dev1.getName() + "\n");
-				event.put("type","bt3");
-				event.put("device",new DeviceProxy(dev1));
+				event.put("type", "bt3");
+				event.put("device", new DeviceProxy(dev1));
 				arrayForBlueToothDevice.add(dev1);
 				break;
 
 			case DK.BT4_NEW:
 				BluetoothDevice dev2 = (BluetoothDevice) msg.obj;
 				arrayForBlueToothDevice.add(dev2);
-				event.put("type","bt4");
-				event.put("device",new DeviceProxy(dev2));
+				event.put("type", "bt4");
+				event.put("device", new DeviceProxy(dev2));
 				break;
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
@@ -142,13 +203,12 @@ public class FeitiansmartcardreaderModule extends KrollModule {
 				break;
 			}
 			if (hasListeners("onConnected")) {
-				fireEvent("onConnected",event);
+				fireEvent("onConnected", event);
 			}
 		}
 	};
 
 	private void readCallbacks() {
-
 		Iterator it = getProperties().entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry) it.next();
@@ -157,6 +217,5 @@ public class FeitiansmartcardreaderModule extends KrollModule {
 			}
 			it.remove(); // avoids a ConcurrentModificationException
 		}
-
 	}
 }

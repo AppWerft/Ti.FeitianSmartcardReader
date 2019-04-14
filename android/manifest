@@ -2,17 +2,17 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.0.0
+version: 1.1.1
 apiversion: 4
 architectures: arm64-v8a armeabi-v7a x86
-description: feitiansmartcardreader
-author: Rainer
+description: Connectot for Feitian smartcardreader
+author: Rainer Schleevoigt
 license: Specify your license
 copyright: Copyright (c) 2019 by Your Company
 
 # these should not be edited
-name: feitiansmartcardreader
+name: feitian
 moduleid: de.appwerft.feitian
 guid: 3908eac2-05f4-4b6a-a8e6-1fabf9d30475
 platform: android
-minsdk: 8.0.0.GA
+minsdk: 7.1.0.GA

@@ -16,7 +16,7 @@ import org.appcelerator.kroll.common.TiConfig;
 
 import android.bluetooth.BluetoothDevice;
 
-@Kroll.proxy(creatableInModule = FeitiansmartcardreaderModule.class)
+@Kroll.proxy(creatableInModule = FeitianModule.class)
 public class DeviceProxy extends KrollProxy {
 	// Standard Debugging variables
 	private static final String LCAT = "ExampleProxy";
@@ -32,13 +32,17 @@ public class DeviceProxy extends KrollProxy {
 		this.device=device;
 	}
 	
-	// Handle creation options
-	@Override
-	public void handleCreationDict(KrollDict options) {
-		super.handleCreationDict(options);
-
-		if (options.containsKey("message")) {
-			Log.d(LCAT, "example created with message: " + options.get("message"));
-		}
+	@Kroll.method
+	public String getName() {
+		return device.getName();
 	}
+	@Kroll.method
+	public String getAddress() {
+		return device.getAddress();
+	}
+	@Kroll.method
+	public void readData() {
+				
+	}
+	
 }

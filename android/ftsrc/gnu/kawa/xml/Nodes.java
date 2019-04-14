@@ -1,0 +1,455 @@
+package gnu.kawa.xml;
+
+import gnu.lists.AbstractSequence;
+import gnu.lists.Consumer;
+import gnu.lists.PositionConsumer;
+import gnu.lists.SeqPosition;
+import gnu.lists.SimpleVector;
+import gnu.lists.TreeList;
+import gnu.mapping.Values.FromList;
+import gnu.xml.NodeTree;
+import gnu.xml.XMLFilter;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+
+
+public class Nodes
+  extends Values.FromList<SeqPosition>
+  implements PositionConsumer, NodeList, Consumer
+{
+  protected NodeVector vector;
+  
+  private Nodes(NodeVector nvector)
+  {
+    super(nvector);
+    vector = nvector;
+  }
+  
+  public Nodes() {
+    this(new NodeVector());
+  }
+  
+  public Consumer append(char c) {
+    maybeStartTextNode();
+    curFragment.append(c);
+    return this;
+  }
+  
+  public Consumer append(CharSequence csq) {
+    maybeStartTextNode();
+    curFragment.append(csq);
+    return this;
+  }
+  
+  public boolean ignoring() {
+    return false;
+  }
+  
+  int nesting = 0;
+  boolean inAttribute;
+  NodeTree curNode;
+  XMLFilter curFragment;
+  
+  public void writePosition(AbstractSequence seq, int ipos) {
+    vector.writePosition(seq, ipos);
+  }
+  
+  public void writePosition(SeqPosition position) {
+    vector.writePosition(position);
+  }
+  
+  public void writeObject(Object v) {
+    if (curFragment != null) {
+      if ((nesting == 0) && (((v instanceof SeqPosition)) || ((v instanceof TreeList))))
+      {
+        finishFragment();
+      } else {
+        curFragment.writeObject(v);
+        return;
+      }
+    }
+    if ((v instanceof SeqPosition)) {
+      writePosition((SeqPosition)v);
+      return;
+    }
+    if ((v instanceof TreeList)) {
+      TreeList tlist = (TreeList)v;
+      writePosition(tlist, 0);
+      return;
+    }
+    handleNonNode();
+    curFragment.writeObject(v);
+  }
+  
+
+  void maybeStartTextNode()
+  {
+    if (curFragment == null)
+    {
+      throw new IllegalArgumentException("non-node where node required");
+    }
+  }
+  
+  void handleNonNode()
+  {
+    if (curFragment == null)
+    {
+      throw new ClassCastException("atomic value where node is required");
+    }
+  }
+  
+  public void writeFloat(float v)
+  {
+    handleNonNode();
+    curFragment.writeFloat(v);
+  }
+  
+  public void writeDouble(double v)
+  {
+    handleNonNode();
+    curFragment.writeDouble(v);
+  }
+  
+  public void writeLong(long v)
+  {
+    handleNonNode();
+    curFragment.writeLong(v);
+  }
+  
+  public void writeInt(int v)
+  {
+    handleNonNode();
+    curFragment.writeInt(v);
+  }
+  
+  public void writeBoolean(boolean v)
+  {
+    handleNonNode();
+    curFragment.writeBoolean(v);
+  }
+  
+  public void write(int v)
+  {
+    maybeStartTextNode();
+    curFragment.write(v);
+  }
+  
+  public Consumer append(CharSequence csq, int start, int end) {
+    maybeStartTextNode();
+    curFragment.append(csq, start, end);
+    return this;
+  }
+  
+  public void write(char[] buf, int off, int len)
+  {
+    maybeStartTextNode();
+    curFragment.write(buf, off, len);
+  }
+  
+  public void write(CharSequence str, int start, int length)
+  {
+    maybeStartTextNode();
+    curFragment.write(str, start, length);
+  }
+  
+  public void write(String str)
+  {
+    maybeStartTextNode();
+    curFragment.write(str);
+  }
+  
+  private void maybeStartNonTextNode()
+  {
+    if ((curFragment != null) && (nesting == 0))
+      finishFragment();
+    if (curFragment == null)
+      startFragment();
+    nesting += 1;
+  }
+  
+  private void maybeEndNonTextNode()
+  {
+    if (--nesting == 0) {
+      finishFragment();
+    }
+  }
+  
+  public void startElement(Object type) {
+    maybeStartNonTextNode();
+    curFragment.startElement(type);
+  }
+  
+  public void endElement()
+  {
+    curFragment.endElement();
+    maybeEndNonTextNode();
+  }
+  
+  public void startAttribute(Object attrType)
+  {
+    maybeStartNonTextNode();
+    curFragment.startAttribute(attrType);
+    inAttribute = true;
+  }
+  
+  public void endAttribute()
+  {
+    if (!inAttribute)
+      return;
+    inAttribute = false;
+    curFragment.endAttribute();
+    maybeEndNonTextNode();
+  }
+  
+  public void writeComment(char[] chars, int offset, int length)
+  {
+    maybeStartNonTextNode();
+    curFragment.writeComment(chars, offset, length);
+    maybeEndNonTextNode();
+  }
+  
+  public void writeCDATA(char[] chars, int offset, int length)
+  {
+    maybeStartNonTextNode();
+    curFragment.writeCDATA(chars, offset, length);
+  }
+  
+
+  public void writeProcessingInstruction(String target, char[] content, int offset, int length)
+  {
+    maybeStartNonTextNode();
+    curFragment.writeProcessingInstruction(target, content, offset, length);
+    maybeEndNonTextNode();
+  }
+  
+  public void startDocument()
+  {
+    maybeStartNonTextNode();
+    curFragment.startDocument();
+  }
+  
+  public void endDocument()
+  {
+    curFragment.endDocument();
+    maybeEndNonTextNode();
+  }
+  
+  public void beginEntity(Object base)
+  {
+    maybeStartNonTextNode();
+    curFragment.beginEntity(base);
+  }
+  
+  public void endEntity()
+  {
+    curFragment.endEntity();
+    maybeEndNonTextNode();
+  }
+  
+  void startFragment()
+  {
+    curNode = new NodeTree();
+    curFragment = new XMLFilter(curNode);
+    writePosition(curNode, 0);
+  }
+  
+  void finishFragment()
+  {
+    curNode = null;
+    curFragment = null;
+  }
+  
+
+
+
+
+
+
+
+  public int getLength()
+  {
+    return size();
+  }
+  
+
+  public Node item(int index)
+  {
+    if (index >= size()) {
+      return null;
+    }
+    return (Node)get(index);
+  }
+  
+
+
+
+  public AbstractSequence getSeq(int index)
+  {
+    if (index >= vector.size())
+      return null;
+    return vector.getSeq(index);
+  }
+  
+  public int getPos(int index)
+  {
+    return vector.getPos(index);
+  }
+  
+  public void consumePosRange(int iposStart, int iposEnd, Consumer out) {
+    vector.consumePosRange(iposStart, iposEnd, out);
+  }
+  
+  public static class NodeVector extends SimpleVector<SeqPosition> implements PositionConsumer {
+    Object[] odata;
+    int[] idata;
+    
+    public NodeVector() {}
+    
+    int getLastIndex() { return getGapStart() - 1; }
+    
+    public int getBufferLength() {
+      return odata == null ? 0 : odata.length;
+    }
+    
+    public void copyBuffer(int length) {
+      checkCanWrite();
+      int oldLength = odata == null ? 0 : odata.length;
+      if (length == -1)
+        length = oldLength;
+      if (oldLength != length) {
+        if (oldLength > length)
+          oldLength = length;
+        Object[] otmp = new Object[length];
+        int[] itmp = new int[length];
+        if (oldLength != 0) {
+          System.arraycopy(odata, 0, otmp, 0, oldLength);
+          System.arraycopy(idata, 0, itmp, 0, oldLength);
+        }
+        odata = otmp;
+        idata = itmp;
+      }
+    }
+    
+    protected Object getBuffer() { throw new Error(); }
+    protected void setBuffer(Object buffer) { throw new Error(); }
+    
+    public SeqPosition getRaw(int index) {
+      Object obj = odata[index];
+      if ((obj instanceof SeqPosition))
+        return (SeqPosition)obj;
+      return makeSeqPos((AbstractSequence)obj, idata[index]);
+    }
+    
+
+    public AbstractSequence getSeq(int index) { return getSeqRaw(effectiveIndex(index)); }
+    
+    public AbstractSequence getSeqRaw(int index) {
+      Object obj = odata[index];
+      if ((obj instanceof SeqPosition))
+        return sequence;
+      return (AbstractSequence)obj;
+    }
+    
+    public int getPos(int index) {
+      return getPosRaw(effectiveIndex(index));
+    }
+    
+    public int getPosRaw(int index) {
+      Object obj = odata[index];
+      if ((obj instanceof SeqPosition))
+        return ipos;
+      return idata[index];
+    }
+    
+    protected static SeqPosition makeSeqPos(AbstractSequence seq, int ipos) {
+      if ((seq instanceof NodeTree)) {
+        return KNode.make((NodeTree)seq, ipos);
+      }
+      return new SeqPosition(seq, ipos);
+    }
+    
+    public void setRaw(int index, SeqPosition value) {
+      checkCanWrite();
+      odata[index] = value;
+      idata[index] = 0;
+    }
+    
+    protected void setBuffer(int index, AbstractSequence seq, int ipos) {
+      checkCanWrite();
+      odata[index] = seq;
+      idata[index] = ipos;
+    }
+    
+    protected void clearBuffer(int start, int count) {
+      checkCanWrite();
+      Object[] d = odata;
+      for (;;) { count--; if (count < 0) break;
+        d[(start++)] = null;
+      }
+    }
+    
+    protected NodeVector newInstance(int newLength) {
+      NodeVector nvec = new NodeVector();
+      if (newLength < 0) {
+        odata = odata;
+        idata = idata;
+      } else {
+        odata = new Object[newLength];
+        idata = new int[newLength];
+      }
+      return nvec;
+    }
+    
+    public void writePosition(SeqPosition seq) {
+      add(seq);
+    }
+    
+    public void writePosition(AbstractSequence seq, int ipos) {
+      int sz = size();
+      add((SeqPosition)null);
+      odata[sz] = seq;
+      idata[sz] = ipos;
+    }
+    
+    public void shift(int srcStart, int dstStart, int count) {
+      checkCanWrite();
+      System.arraycopy(odata, srcStart, odata, dstStart, count);
+      System.arraycopy(idata, srcStart, idata, dstStart, count);
+    }
+    
+    public void consumePosRange(int iposStart, int iposEnd, Consumer out) {
+      if (out.ignoring())
+        return;
+      int i = nextIndex(iposStart);
+      int end = nextIndex(iposEnd);
+      int size = size();
+      if (end > size)
+        end = size;
+      for (; i < end; i++) {
+        int ii = effectiveIndex(i);
+        if ((out instanceof PositionConsumer)) {
+          PositionConsumer pout = (PositionConsumer)out;
+          Object obj = odata[ii];
+          if ((obj instanceof SeqPosition)) {
+            pout.writePosition((SeqPosition)obj);
+          } else {
+            pout.writePosition((AbstractSequence)obj, idata[ii]);
+          }
+        } else {
+          out.writeObject(getRaw(ii));
+        }
+      }
+    }
+  }
+  
+  public static KNode root(NodeTree seq, int ipos) { int root;
+    int root;
+    if ((gapStart > 5) && (data[0] == 61714))
+    {
+      root = 10;
+    } else
+      root = 0;
+    return KNode.make(seq, root);
+  }
+}
