@@ -123,22 +123,37 @@ public class FeitianModule extends KrollModule {
 			e.printStackTrace();
 		}
 	}
+
 	@Kroll.method
 	public String[] openDevice(Object o) {
 		if (o instanceof DeviceProxy) {
+			try {
+				String[] result = ftReader.readerOpen(((DeviceProxy) o).device);
+				return result;
+			} catch (FTException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+		}
+		return null;
+	}
+
+	@Kroll.method
+	public String powerOn() {
 		try {
-			String[] result = ftReader.readerOpen(((DeviceProxy)o).device);
-			return result;
+			byte[] bytes = ftReader.readerPowerOn(0);
+			return null;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
-		}}
-		return null;
+		}
+
 	}
-	
+
 	@Kroll.method
-	
+
 	public KrollDict getType() {
 		KrollDict res = new KrollDict();
 		try {
@@ -158,7 +173,7 @@ public class FeitianModule extends KrollModule {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			boolean devicefound=false;
+			boolean devicefound = false;
 			KrollDict event = new KrollDict();
 			event.put("msgwhat", msg.what);
 			switch (msg.what) {
@@ -177,30 +192,32 @@ public class FeitianModule extends KrollModule {
 				event.put("type", "USB_LOG");
 				break;
 			case DK.BT3_LOG:
-				devicefound=true;
-				event.put("type", "BT3Log");
-				Log.d(LCAT,"[BT3Log]:"+msg.obj);
+				Log.d(LCAT, "[BT3Log]:" + msg.obj);
 				break;
 			case DK.BT4_LOG:
-				devicefound=true;
-				event.put("type", "BT4Log");
-				Log.d(LCAT,"[BT4Log]:"+msg.obj);
+				Log.d(LCAT, "[BT4Log]:" + msg.obj);
 				break;
 			case DK.FTREADER_LOG:
-				event.put("type", "FTReaderLog");
-				Log.d(LCAT,"[FTReaderLog]:"+msg.obj);
+				Log.d(LCAT, "[FTReaderLog]:" + msg.obj);
 				break;
 			case DK.CCIDSCHEME_LOG:
 				event.put("type", "CCIDSchemeLog");
-				Log.d(LCAT,"[CCIDSchemeLog]:"+msg.obj);
+				Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
 				break;
-
 			case DK.BT3_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
-				devicefound=true;
-				event.put("type", "BT3_NEW");
-				event.put("device", new DeviceProxy(dev1));
-				arrayForBlueToothDevice.add(dev1);
+				try {
+					String[] result = ftReader.readerOpen(msg.obj);
+					devicefound = true;
+					event.put("type", "BT3_NEW");
+					event.put("device", new DeviceProxy(dev1));
+					event.put("open", result);
+					arrayForBlueToothDevice.add(dev1);
+				} catch (FTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				break;
 
 			case DK.BT4_NEW:
