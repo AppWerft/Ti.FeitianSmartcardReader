@@ -170,11 +170,10 @@ public class FeitianModule extends KrollModule {
 				// textView.append("[BT4Log]:"+msg.obj+"\n");
 				break;
 			case DK.FTREADER_LOG:
-				// textView.append("[FTReaderLog]:"+msg.obj+"\n");
+				Log.d(LCAT,"[FTReaderLog]:"+msg.obj);
 				break;
 			case DK.CCIDSCHEME_LOG:
-				Log.d(LCAT,"\"[CCIDSchemeLog]:\"+msg.obj+");
-				// textView.append("[CCIDSchemeLog]:"+msg.obj+"\n");
+				Log.d(LCAT,"[CCIDSchemeLog]:"+msg.obj);
 				break;
 
 			case DK.BT3_NEW:
