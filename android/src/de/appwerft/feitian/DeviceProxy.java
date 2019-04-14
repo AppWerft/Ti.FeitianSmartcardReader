@@ -37,6 +37,16 @@ public class DeviceProxy extends KrollProxy {
 		return device.getName();
 	}
 	@Kroll.method
+	public KrollDict getDetails() {
+		KrollDict res = new KrollDict();
+		res.put("address", device.getAddress());
+		res.put("name", device.getName());
+		res.put("bondState", device.getBondState());
+		res.put("type", device.getType());
+		
+		return res;
+	}
+	@Kroll.method
 	public String getAddress() {
 		return device.getAddress();
 	}
