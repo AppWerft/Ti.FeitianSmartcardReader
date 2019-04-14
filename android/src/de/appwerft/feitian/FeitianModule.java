@@ -148,6 +148,7 @@ public class FeitianModule extends KrollModule {
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			KrollDict event = new KrollDict();
+			event.put("msgwhat", msg.what);
 			switch (msg.what) {
 			case -1:
 				return;
@@ -161,24 +162,29 @@ public class FeitianModule extends KrollModule {
 			case DK.PCSCSERVER_LOG:
 				break;
 			case DK.USB_LOG:
+				event.put("type", "USB_LOG");
 				break;
 			case DK.BT3_LOG:
+				event.put("type", "BT3Log");
 				Log.d(LCAT,"[BT3Log]:"+msg.obj);
 				break;
 			case DK.BT4_LOG:
+				event.put("type", "BT4Log");
 				Log.d(LCAT,"[BT4Log]:"+msg.obj);
 				break;
 			case DK.FTREADER_LOG:
+				event.put("type", "FTReaderLog");
 				Log.d(LCAT,"[FTReaderLog]:"+msg.obj);
 				break;
 			case DK.CCIDSCHEME_LOG:
+				event.put("type", "CCIDSchemeLog");
 				Log.d(LCAT,"[CCIDSchemeLog]:"+msg.obj);
 				break;
 
 			case DK.BT3_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "[BT3_NEW]:" + dev1.getName());
-				event.put("type", "bt3");
+				event.put("type", "BT3_NEW");
 				event.put("device", new DeviceProxy(dev1));
 				arrayForBlueToothDevice.add(dev1);
 				break;
@@ -186,7 +192,7 @@ public class FeitianModule extends KrollModule {
 			case DK.BT4_NEW:
 				BluetoothDevice dev2 = (BluetoothDevice) msg.obj;
 				arrayForBlueToothDevice.add(dev2);
-				event.put("type", "bt4");
+				event.put("type", "BT4_NEW");
 				event.put("device", new DeviceProxy(dev2));
 				break;
 			case DK.BT4_ACL_DISCONNECTED:
