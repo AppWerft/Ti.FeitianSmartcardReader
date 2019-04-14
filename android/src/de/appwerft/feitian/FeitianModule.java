@@ -116,12 +116,9 @@ public class FeitianModule extends KrollModule {
 
 	@Kroll.method
 	public void find(int version) {
-		Log.d(LCAT,"new FTReader in find() " + version);
 		ftReader = new FTReader(ctx, mHandler, version);
 		try {
-			Log.d(LCAT, "try readerFind");
 			ftReader.readerFind();
-			Log.d(LCAT, "readerFind");
 		} catch (FTException e) {
 			e.printStackTrace();
 		}
@@ -186,7 +183,7 @@ public class FeitianModule extends KrollModule {
 
 			case DK.BT3_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
-				Log.d(LCAT, "[BT3_NEW]:" + dev1.getName());
+				devicefound=true;
 				event.put("type", "BT3_NEW");
 				event.put("device", new DeviceProxy(dev1));
 				arrayForBlueToothDevice.add(dev1);
