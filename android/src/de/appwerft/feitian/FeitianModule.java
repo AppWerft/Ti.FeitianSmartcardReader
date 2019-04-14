@@ -206,13 +206,17 @@ public class FeitianModule extends KrollModule {
 				break;
 			case DK.BT3_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
+				String[] readerNames;
 				try {
-					String[] result = ftReader.readerOpen(msg.obj);
+					readerNames = ftReader.readerOpen(dev1);
 					devicefound = true;
 					event.put("type", "BT3_NEW");
-					event.put("device", new DeviceProxy(dev1));
-					event.put("open", result);
+				//	event.put("device", new DeviceProxy(dev1));
+					event.put("open", readerNames);
 					arrayForBlueToothDevice.add(dev1);
+					for(int i=0;i<readerNames.length;i++){
+						Log.d(LCAT,"readerNames["+i+"]:"+readerNames[i]);
+}
 				} catch (FTException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
