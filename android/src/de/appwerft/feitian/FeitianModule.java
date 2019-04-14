@@ -124,9 +124,9 @@ public class FeitianModule extends KrollModule {
 		}
 	}
 	@Kroll.method
-	public String[] openDevice(DeviceProxy dp) {
+	public String[] openDevice(DeviceProxy proxy) {
 		try {
-			String[] result = ftReader.readerOpen(dp.getDevice());
+			String[] result = ftReader.readerOpen(proxy.device);
 			return result;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
