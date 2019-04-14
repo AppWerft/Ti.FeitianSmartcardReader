@@ -164,10 +164,10 @@ public class FeitianModule extends KrollModule {
 			case DK.USB_LOG:
 				break;
 			case DK.BT3_LOG:
-				// textView.append("[BT3Log]:"+msg.obj+"\n");
+				Log.d(LCAT,"[BT3Log]:"+msg.obj);
 				break;
 			case DK.BT4_LOG:
-				// textView.append("[BT4Log]:"+msg.obj+"\n");
+				Log.d(LCAT,"[BT4Log]:"+msg.obj);
 				break;
 			case DK.FTREADER_LOG:
 				Log.d(LCAT,"[FTReaderLog]:"+msg.obj);
@@ -178,7 +178,7 @@ public class FeitianModule extends KrollModule {
 
 			case DK.BT3_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
-				Log.d(LCAT, "[BT3_NEW]:" + dev1.getName() + "\n");
+				Log.d(LCAT, "[BT3_NEW]:" + dev1.getName());
 				event.put("type", "bt3");
 				event.put("device", new DeviceProxy(dev1));
 				arrayForBlueToothDevice.add(dev1);
