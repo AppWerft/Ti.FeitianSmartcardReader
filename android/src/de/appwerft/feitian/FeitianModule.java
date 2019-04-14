@@ -147,6 +147,7 @@ public class FeitianModule extends KrollModule {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
+			boolean devicefound=false;
 			KrollDict event = new KrollDict();
 			event.put("msgwhat", msg.what);
 			switch (msg.what) {
@@ -165,10 +166,12 @@ public class FeitianModule extends KrollModule {
 				event.put("type", "USB_LOG");
 				break;
 			case DK.BT3_LOG:
+				devicefound=true;
 				event.put("type", "BT3Log");
 				Log.d(LCAT,"[BT3Log]:"+msg.obj);
 				break;
 			case DK.BT4_LOG:
+				devicefound=true;
 				event.put("type", "BT4Log");
 				Log.d(LCAT,"[BT4Log]:"+msg.obj);
 				break;
@@ -206,7 +209,7 @@ public class FeitianModule extends KrollModule {
 				}
 				break;
 			}
-			if (hasListeners("onfound")) {
+			if (devicefound && hasListeners("onfound")) {
 				fireEvent("onfound", event);
 			}
 		}
