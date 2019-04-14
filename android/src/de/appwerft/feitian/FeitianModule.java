@@ -123,8 +123,20 @@ public class FeitianModule extends KrollModule {
 			e.printStackTrace();
 		}
 	}
-
 	@Kroll.method
+	public String[] open(DeviceProxy dp) {
+		try {
+			String[] result = ftReader.readerOpen(dp.getDevice());
+			return result;
+		} catch (FTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Kroll.method
+	
 	public KrollDict getType() {
 		KrollDict res = new KrollDict();
 		try {

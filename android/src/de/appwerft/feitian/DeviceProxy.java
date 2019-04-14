@@ -21,7 +21,7 @@ public class DeviceProxy extends KrollProxy {
 	// Standard Debugging variables
 	private static final String LCAT = "ExampleProxy";
 	private static final boolean DBG = TiConfig.LOGD;
-	private BluetoothDevice device;
+	public BluetoothDevice device;
 
 	public DeviceProxy() {
 		super();
@@ -30,6 +30,10 @@ public class DeviceProxy extends KrollProxy {
 	public DeviceProxy(BluetoothDevice device) {
 		super();
 		this.device=device;
+	}
+	
+	public BluetoothDevice getDevice() {
+		return this.device;
 	}
 	
 	@Kroll.method
