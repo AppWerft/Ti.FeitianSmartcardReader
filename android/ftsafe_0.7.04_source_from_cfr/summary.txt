@@ -1,0 +1,1272 @@
+Summary for /www/javadecompilers/app/public/data/15.04.19/cb4b04893106ccf645c08c85c81c05e0/ftsafe_0.7.04.jar
+Decompiled with CFR 0.139
+
+
+gnu.bytecode.CodeAttr
+----------------------------
+
+emitPushPrimArray(java.lang.Object gnu.bytecode.ArrayType )
+  Unable to fully structure code
+
+
+gnu.commonlisp.lisp.PrimOps
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+gnu.commonlisp.lisp.primitives
+----------------------------
+
+memberWithTest(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+memberWithKey(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+memberPlain(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+
+
+gnu.kawa.functions.Map
+----------------------------
+
+applyN(java.lang.Object[] )
+  Unable to fully structure code
+
+
+gnu.kawa.functions.RunProcess
+----------------------------
+
+doit(java.lang.Object[] gnu.lists.Consumer )
+  Unable to fully structure code
+
+
+gnu.kawa.functions.Setter
+----------------------------
+
+<init>(java.util.List )
+  Unable to fully structure code
+
+
+gnu.kawa.io.PrettyWriter
+----------------------------
+
+maybeOutput(boolean boolean )
+  Unable to fully structure code
+
+
+gnu.kawa.lispexpr.LispReader
+----------------------------
+
+readToken(int gnu.kawa.lispexpr.ReadTable )
+  Unable to fully structure code
+
+
+gnu.kawa.models.Display
+----------------------------
+
+getInstance()
+  Loose catch block
+
+
+gnu.kawa.slib.StreamsDerived
+----------------------------
+
+stream$To$List$V(java.lang.Object[] )
+  Loose catch block
+lambda14()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda29()
+  Loose catch block
+streamRange$V(gnu.math.Numeric gnu.math.Numeric java.lang.Object[] )
+  Loose catch block
+lambda81()
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+gnu.kawa.slib.XML
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+gnu.kawa.slib.conditions
+----------------------------
+
+makeCondition$V(gnu.kawa.slib.condition-type java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+isConditionHasType(java.lang.Object gnu.kawa.slib.condition-type )
+  Loose catch block
+conditionTypes(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+typeFieldAlistRef(java.lang.Object java.lang.Object )
+  Loose catch block
+extractCondition(gnu.kawa.slib.condition gnu.kawa.slib.condition-type )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+typeFieldAlist$To$Condition(java.lang.Object )
+  Loose catch block
+checkConditionTypeFieldAlist(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+gnu.kawa.slib.enums
+----------------------------
+
+mapNames(gnu.mapping.Symbol gnu.lists.LList int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+gnu.kawa.slib.genwrite
+----------------------------
+
+lambda3isReadMacro(java.lang.Object )
+  Unable to fully structure code
+lambda21wr(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+lambda2ppExpr(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+lambda4pr(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+lambda7ppGeneral(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object gnu.mapping.Procedure )
+  Loose catch block
+lambda16ppLET(java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+lambda22ppDown(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+lambda23revStringAppend(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+
+
+gnu.kawa.slib.gui
+----------------------------
+
+polygon(gnu.math.Complex java.lang.Object[] )
+  Unable to fully structure code
+button(java.lang.Object[] )
+  Loose catch block
+Button(java.lang.Object[] )
+  Loose catch block
+Label(java.lang.Object[] )
+  Loose catch block
+Text(java.lang.Object[] )
+  Loose catch block
+Row(java.lang.Object[] )
+  Loose catch block
+Column(java.lang.Object[] )
+  Loose catch block
+Window(java.lang.Object[] )
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+gnu.kawa.slib.ppfile
+----------------------------
+
+lambda1fun(java.lang.Object )
+  Loose catch block
+lambda2fun(java.lang.Object )
+  Loose catch block
+
+
+gnu.kawa.slib.pregexp
+----------------------------
+
+pregexpReverse$Ex(java.lang.Object )
+  Loose catch block
+pregexpReadPattern(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadBranch(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadPiece(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpWrapQuantifierIfAny(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadEscapedNumber(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadEscapedChar(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadSubpattern(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadCharList(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadPosixCharClass(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadClusterType(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReadNums(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpStringMatch(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+isPregexpAtWordBoundary(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+isPregexpCheckIfInCharClass(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+pregexpListRef(java.lang.Object java.lang.Object )
+  Loose catch block
+pregexpMatchPositionsAux(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReplaceAux(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpMatchPositions$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Loose catch block
+pregexpMatch$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+pregexpSplit(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+pregexpReplace(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpReplace$St(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pregexpQuote(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda3sub(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+gnu.kawa.slib.printf
+----------------------------
+
+stdio$ClIprintf$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stdio$ClRoundString(java.lang.CharSequence java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+lambda17real(java.lang.Object java.lang.Object gnu.mapping.Procedure )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda18(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda23sign(java.lang.Object java.lang.Object gnu.mapping.Procedure )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda24digits(java.lang.Object java.lang.Object gnu.mapping.Procedure )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+sprintf$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+gnu.kawa.slib.readtable
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+gnu.kawa.slib.srfi1
+----------------------------
+
+lastPair(gnu.lists.Pair )
+  Unable to fully structure code
+isProperList(java.lang.Object )
+  Loose catch block
+isDottedList(java.lang.Object )
+  Loose catch block
+isCircularList(java.lang.Object )
+  Unable to fully structure code
+list$Eq$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+length$Pl(java.lang.Object )
+  Unable to fully structure code
+car$PlCdr(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+take(java.lang.Object gnu.math.IntNum )
+  Loose catch block
+drop(java.lang.Object gnu.math.IntNum )
+  Unable to fully structure code
+takeRight(java.lang.Object gnu.math.IntNum )
+  Loose catch block
+lambda1recur(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+dropRight$Ex(java.lang.Object gnu.math.IntNum )
+  Loose catch block
+splitAt(java.lang.Object gnu.math.IntNum )
+  Unable to fully structure code
+unzip1(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+append$Ex$V(java.lang.Object[] )
+  Unable to fully structure code
+appendReverse(java.lang.Object java.lang.Object )
+  Loose catch block
+appendReverse$Ex(java.lang.Object java.lang.Object )
+  Loose catch block
+reduceRight(gnu.mapping.Procedure java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+count$V(gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Unable to fully structure code
+unfold$V(gnu.mapping.Procedure gnu.mapping.Procedure gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Unable to fully structure code
+fold$V(gnu.mapping.Procedure java.lang.Object java.lang.Object java.lang.Object[] )
+  Loose catch block
+lambda46recur(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pairFold$V(gnu.mapping.Procedure java.lang.Object java.lang.Object java.lang.Object[] )
+  Unable to fully structure code
+reduce(gnu.mapping.Procedure java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+pairForEach$V(gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Unable to fully structure code
+map$Ex$V(gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+filterMap$V(gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Loose catch block
+filter(gnu.mapping.Procedure java.lang.Object )
+  Loose catch block
+filter$Ex(gnu.mapping.Procedure java.lang.Object )
+  Loose catch block
+partition(gnu.mapping.Procedure java.lang.Object )
+  Unable to fully structure code
+partition$Ex(gnu.mapping.Procedure java.lang.Object )
+  Loose catch block
+alistCopy(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+findTail(gnu.mapping.Procedure java.lang.Object )
+  Unable to fully structure code
+dropWhile(gnu.mapping.Procedure java.lang.Object )
+  Loose catch block
+takeWhile$Ex(gnu.mapping.Procedure java.lang.Object )
+  Loose catch block
+span(gnu.mapping.Procedure java.lang.Object )
+  Loose catch block
+span$Ex(gnu.mapping.Procedure java.lang.Object )
+  Loose catch block
+any$V(gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Loose catch block
+every$V(gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Loose catch block
+listIndex$V(gnu.mapping.Procedure java.lang.Object java.lang.Object[] )
+  Unable to fully structure code
+lset$Ls$Eq$V(gnu.mapping.Procedure java.lang.Object[] )
+  Loose catch block
+lset$Eq$V(gnu.mapping.Procedure java.lang.Object[] )
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Loose catch block
+
+
+gnu.kawa.slib.srfi13
+----------------------------
+
+stringParseStart$PlEnd(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+substring$SlShared$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcStringMap(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcStringMap$Ex(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringFold$V(java.lang.Object java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringFoldRight$V(java.lang.Object java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringUnfold$V(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringUnfoldRight$V(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringEvery$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringAny$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcStringPrefixLength(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+$PcStringSuffixLength(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+$PcStringPrefixLengthCi(java.lang.Object int int java.lang.Object int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcStringSuffixLengthCi(java.lang.Object int int java.lang.Object int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringPrefixLengthCi$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+stringSuffixLengthCi$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+$PcStringPrefixCi$Qu(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+$PcStringSuffixCi$Qu(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+$PcStringCompare(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+$PcStringCompareCi(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+$PcStringHash(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringHash$V(java.lang.Object java.lang.Object[] )
+  Loose catch block
+stringHashCi$V(java.lang.Object java.lang.Object[] )
+  Loose catch block
+$PcStringTitlecase$Ex(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+stringIndex$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringSkip$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringTitlecase$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringTake(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringTakeRight(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringTrim$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringTrimRight$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringSkipRight$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringTrimBoth$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringPadRight$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringPad$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringDelete$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Loose catch block
+lambda32(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda33(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda34(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringFilter$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Loose catch block
+lambda35(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda36(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda37(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringIndexRight$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringCount$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcKmpSearch(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+makeKmpRestartVector$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+kmpStep(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringKmpPartialSearch$V(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringReverse$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringReverse$Ex$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+reverseList$To$String(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringConcatenate$SlShared(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringConcatenate(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringConcatenateReverse$V(java.lang.Object java.lang.Object[] )
+  Loose catch block
+$PcFinishStringConcatenateReverse(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+stringConcatenateReverse$SlShared$V(java.lang.Object java.lang.Object[] )
+  Loose catch block
+stringReplace$V(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+stringTokenize$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+xsubstring$V(java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+$PcMultispanRepcopy$Ex(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 5 blocks at once
+stringXcopy$Ex$V(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 5 blocks at once
+stringJoin$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Loose catch block
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+
+
+gnu.kawa.slib.srfi14
+----------------------------
+
+charSetHash(gnu.kawa.slib.srfi14$CharSet int )
+  Loose catch block
+charSetFold(gnu.mapping.Procedure java.lang.Object gnu.kawa.slib.srfi14$CharSet )
+  Unable to fully structure code
+charSetForEach(gnu.mapping.Procedure gnu.kawa.slib.srfi14$CharSet )
+  Loose catch block
+charSetMap(gnu.mapping.Procedure gnu.kawa.slib.srfi14$CharSet )
+  Unable to fully structure code
+charSetFilter(gnu.mapping.Procedure gnu.kawa.slib.srfi14$CharSet gnu.kawa.slib.srfi14$CharSet )
+  Unable to fully structure code
+charSetFilter$Ex(gnu.mapping.Procedure gnu.kawa.slib.srfi14$CharSet gnu.kawa.slib.srfi14$CharSet )
+  Loose catch block
+charSetEvery(gnu.mapping.Procedure gnu.kawa.slib.srfi14$CharSet )
+  Unable to fully structure code
+charSetAny(gnu.mapping.Procedure gnu.kawa.slib.srfi14$CharSet )
+  Unable to fully structure code
+$PcBoundaryPairsIntersection(gnu.lists.LList gnu.lists.LList )
+  Loose catch block
+$PcBoundaryPairsUnion(gnu.lists.LList gnu.lists.LList )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcBoundaryPairsXor(gnu.lists.LList gnu.lists.LList )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcWriteInversionList(int[] gnu.lists.LList int )
+  Unable to fully structure code
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+<init>(int[] )
+  Loose catch block
+
+
+gnu.kawa.slib.srfi37
+----------------------------
+
+lambda1scanArgs(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda2find(java.lang.Object java.lang.Object )
+  Loose catch block
+lambda6scanShortOptions(gnu.math.IntNum java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+gnu.kawa.slib.srfi60
+----------------------------
+
+list$To$Integer(gnu.lists.LList )
+  Unable to fully structure code
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+
+
+gnu.kawa.slib.srfi69
+----------------------------
+
+alist$To$HashTable(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+
+
+gnu.kawa.slib.swing
+----------------------------
+
+scroll$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+gnu.kawa.slib.syntaxutils
+----------------------------
+
+unrewrite(gnu.expr.Expression )
+  Loose catch block
+unrewriteQuote(gnu.expr.QuoteExp )
+  Loose catch block
+unrewriteArglist(gnu.expr.LambdaExp )
+  Loose catch block
+unrewriteApply(gnu.expr.ApplyExp )
+  Loose catch block
+
+
+gnu.kawa.slib.testing
+----------------------------
+
+$PcTestAnySpecifierMatches(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+testResultSet$Ex(java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+$PcTestBegin(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+$PcTestFormatLine(java.lang.Object )
+  Loose catch block
+$PcTestEnd(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcTestWriteResult1(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+testOnTestEndSimple(java.lang.Object )
+  Loose catch block
+lambda4loop(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+testResultKind$V(java.lang.Object[] )
+  Loose catch block
+isTestPassed$V(java.lang.Object[] )
+  Loose catch block
+$PcTestReportResult()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcTestOnTestBegin(java.lang.Object )
+  Loose catch block
+$PcTestOnTestEnd(java.lang.Object java.lang.Object )
+  Loose catch block
+testApply$V(java.lang.Object java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda13(java.lang.Object )
+  Unable to fully structure code
+lambda14(java.lang.Object )
+  Unable to fully structure code
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Loose catch block
+
+
+gnu.mapping.Promise
+----------------------------
+
+getValue()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [8[UNCONDITIONALDOLOOP]], but top level block is 13[SIMPLE_IF_TAKEN]
+
+
+gnu.xml.XMLParser
+----------------------------
+
+parse(gnu.kawa.io.InPort gnu.xml.XMLFilter )
+  Unable to fully structure code
+
+
+kawa.Shell
+----------------------------
+
+run(gnu.expr.Language gnu.mapping.Environment gnu.kawa.io.InPort gnu.lists.Consumer gnu.kawa.io.OutPort java.net.URL gnu.text.SourceMessages )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+kawa.lib.arrays
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+kawa.lib.bytevectors
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Unable to fully structure code
+
+
+kawa.lib.case_syntax
+----------------------------
+
+clauseDatums$To$Exps(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.characters
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.compile_map
+----------------------------
+
+stringForEachValidateApply(gnu.expr.ApplyExp gnu.expr.InlineCalls gnu.bytecode.Type gnu.mapping.Procedure )
+  Unable to fully structure code
+lambda1loop(java.lang.Object java.lang.Object java.lang.Object int java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+initialize(gnu.expr.ApplyExp gnu.expr.Compilation )
+  Loose catch block
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+
+
+kawa.lib.compile_misc
+----------------------------
+
+pipeProcessValidateApply(gnu.expr.ApplyExp gnu.expr.InlineCalls gnu.bytecode.Type gnu.mapping.Procedure )
+  Loose catch block
+charCompareValidateApply(gnu.expr.ApplyExp gnu.expr.InlineCalls gnu.bytecode.Type gnu.mapping.Procedure )
+  Loose catch block
+valuesValidateApply(gnu.expr.ApplyExp gnu.expr.InlineCalls gnu.bytecode.Type gnu.mapping.Procedure )
+  Loose catch block
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+
+
+kawa.lib.exceptions
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.files
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.kawa.expressions
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.kawa.pictures
+----------------------------
+
+makePoint(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+rectangle(java.awt.geom.Point2D java.lang.Object )
+  Loose catch block
+linePath(boolean java.awt.geom.Point2D java.lang.Object[] )
+  Loose catch block
+circle(float java.awt.geom.Point2D )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+borderShape(java.lang.Object boolean gnu.kawa.models.Picture )
+  Loose catch block
+$To$Paint(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+withTransform(java.lang.Object java.lang.Object )
+  Loose catch block
+lambda15(gnu.math.RealNum )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 6 blocks at once
+
+
+kawa.lib.kawa.quaternions
+----------------------------
+
+unitQuaternion(java.lang.Number )
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+kawa.lib.kawa.regex
+----------------------------
+
+isRegexMatch(java.lang.Object java.lang.CharSequence int int )
+  Loose catch block
+regexMatch(java.lang.Object java.lang.CharSequence int int )
+  Loose catch block
+regexMatchPositions(java.lang.Object java.lang.CharSequence int int )
+  Loose catch block
+regexSplit(java.lang.Object java.lang.CharSequence )
+  Loose catch block
+regexReplace(java.lang.Object java.lang.CharSequence java.lang.Object )
+  Loose catch block
+regexReplace$St(java.lang.Object java.lang.CharSequence java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Loose catch block
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+kawa.lib.kawa.rotations
+----------------------------
+
+rotationMatrix$To$Quaternion(gnu.lists.Array )
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+
+
+kawa.lib.kawa.string-cursors
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+kawa.lib.kawa.swing
+----------------------------
+
+frame(java.lang.Object[] )
+  Loose catch block
+frameKeyword(gnu.kawa.swingviews.SwingFrame java.lang.String java.lang.Object )
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.keywords
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.lists
+----------------------------
+
+reverse(gnu.lists.LList )
+  Unable to fully structure code
+assq(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+assv(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+assoc(java.lang.Object java.lang.Object gnu.mapping.Procedure )
+  Unable to fully structure code
+listCopy(java.lang.Object )
+  Unable to fully structure code
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Loose catch block
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.misc
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.misc_syntax
+----------------------------
+
+lambda1(java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.numbers
+----------------------------
+
+isInteger(java.lang.Object )
+  Loose catch block
+isInfinite(java.lang.Number )
+  Loose catch block
+gcd(gnu.math.RealNum[] )
+  Loose catch block
+lcm(gnu.math.RealNum[] )
+  Loose catch block
+asin(java.lang.Number )
+  Loose catch block
+sqrt(java.lang.Number )
+  Loose catch block
+acos(java.lang.Number )
+  Loose catch block
+makeQuantity(java.lang.Object java.lang.Object )
+  Loose catch block
+lambda1(java.lang.Number java.lang.Number )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda2(java.lang.Number )
+  Loose catch block
+lambda22(gnu.math.Quaternion )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Loose catch block
+
+
+kawa.lib.ports
+----------------------------
+
+peekU8(java.lang.Object )
+  Loose catch block
+readBytevector$Ex(gnu.lists.U8Vector java.lang.Object int int )
+  Loose catch block
+setInputPortLineNumber$Ex(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+
+
+kawa.lib.prim_syntax
+----------------------------
+
+lambda1(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.reflection
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.rnrs.hashtables
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.rnrs.lists
+----------------------------
+
+find(gnu.mapping.Procedure gnu.lists.LList )
+  Loose catch block
+forAll$V(gnu.mapping.Procedure gnu.lists.LList java.lang.Object[] )
+  Unable to fully structure code
+exists$V(gnu.mapping.Procedure gnu.lists.LList java.lang.Object[] )
+  Unable to fully structure code
+filter(gnu.mapping.Procedure gnu.lists.LList )
+  Loose catch block
+partition(gnu.mapping.Procedure gnu.lists.LList )
+  Unable to fully structure code
+foldLeft$V(gnu.mapping.Procedure java.lang.Object gnu.lists.LList java.lang.Object[] )
+  Unable to fully structure code
+lambda8recur(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+memp(gnu.mapping.Procedure gnu.lists.LList )
+  Unable to fully structure code
+assp(gnu.mapping.Procedure gnu.lists.LList )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.rnrs.programs
+----------------------------
+
+exit(java.lang.Object )
+  Loose catch block
+emergencyExit(java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.rnrs.unicode
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.scheme.eval
+----------------------------
+
+environment$V(java.lang.Object[] )
+  Unable to fully structure code
+apply(gnu.mapping.CallContext )
+  Loose catch block
+
+
+kawa.lib.srfi95
+----------------------------
+
+isSorted(java.lang.Object java.lang.Object java.lang.Object )
+  Unable to fully structure code
+merge(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 6 blocks at once
+sort$ClMerge$Ex(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+lambda3loop(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+$PcSortList(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+sort$Ex(gnu.lists.Sequence java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+$PcVectorSort$Ex(gnu.lists.Sequence java.lang.Object java.lang.Object )
+  Unable to fully structure code
+$PcSortVector(gnu.lists.Sequence java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Loose catch block
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.strings
+----------------------------
+
+list$To$String(gnu.lists.LList )
+  Loose catch block
+stringForEach(java.lang.Object java.lang.CharSequence java.lang.Object[] )
+  Unable to fully structure code
+stringMap(java.lang.Object java.lang.CharSequence java.lang.CharSequence[] )
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.lib.syntax
+----------------------------
+
+lambda6loop(java.lang.Object java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.system
+----------------------------
+
+makeProcess(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+convertVectorToStringArray(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+convertListToStringArray(java.lang.Object )
+  Unable to fully structure code
+tokenizeStringToStringArray(java.lang.String )
+  Unable to fully structure code
+getEnvironmentVariables()
+  Unable to fully structure code
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.thread
+----------------------------
+
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+
+
+kawa.lib.uniform
+----------------------------
+
+list$To$S8vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$U8vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$S16vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$U16vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$S32vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$U32vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$S64vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$U64vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$F32vector(gnu.lists.LList )
+  Unable to fully structure code
+list$To$F64vector(gnu.lists.LList )
+  Unable to fully structure code
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+
+
+kawa.lib.vectors
+----------------------------
+
+lambda1vectorForEachGeneric(gnu.mapping.Procedure java.util.List java.util.List[] )
+  Loose catch block
+apply1(gnu.expr.ModuleMethod java.lang.Object )
+  Loose catch block
+apply2(gnu.expr.ModuleMethod java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply3(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+apply4(gnu.expr.ModuleMethod java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 4 blocks at once
+applyN(gnu.expr.ModuleMethod java.lang.Object[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+kawa.standard.module_static
+----------------------------
+
+scanForDefinitions(gnu.lists.Pair gnu.expr.ScopeExp kawa.lang.Translator )
+  Unable to fully structure code
+
+
+kawa.standard.with_compile_options
+----------------------------
+
+getOptions(java.lang.Object java.util.Stack kawa.lang.Syntax kawa.lang.Translator )
+  Unable to fully structure code
+
+
+com.ftsafe.CCIDScheme$frame
+----------------------------
+
+lambda9loop(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+com.ftsafe.CCIDScheme
+----------------------------
+
+readerOpen(java.lang.Object )
+  Loose catch block
+slice(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+callWithInputU8vector(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+filter(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+listXor(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+isInList(java.lang.Object java.lang.Object )
+  Unable to fully structure code
+listRemoveDuplication(java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+getStringDescriptor(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda9loop(java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda25(java.lang.Object )
+  Loose catch block
+getAtrSupportProtocol(java.lang.Object )
+  Loose catch block
+getAtrTATBForT15(java.lang.Object )
+  Loose catch block
+getPps1(java.lang.Object )
+  Loose catch block
+getAtrIFSC(java.lang.Object )
+  Loose catch block
+getAtrTCForT1(java.lang.Object )
+  Loose catch block
+getAtrTBForT1(java.lang.Object )
+  Loose catch block
+generatePPSParametersT1(java.lang.Object )
+  Loose catch block
+generatePPSParametersT0(java.lang.Object )
+  Loose catch block
+getCardTimeoutT1(java.lang.Object )
+  Loose catch block
+getCardTimeoutT0(java.lang.Object )
+  Loose catch block
+makeGET_DEVICE_INFFunc(java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+doXfrBlockAPDUExtendedProtocol(java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+doXfrBlockTPDUT1Protocol(java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Loose catch block
+lambda38loop2(java.lang.Object )
+  Unable to fully structure code
+lambda51(com.ftsafe.CCIDScheme$frame17 java.lang.Object java.lang.Object java.lang.Object java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 5 blocks at once
+lambda52(com.ftsafe.CCIDScheme$frame17 java.lang.Object java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 3 blocks at once
+lambda53(com.ftsafe.CCIDScheme$frame17 java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+lambda55(com.ftsafe.CCIDScheme$frame17 java.lang.Object )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
