@@ -219,10 +219,9 @@ public class FeitianModule extends KrollModule {
 				// ftReader.readerPowerOn(0);
 
 				devicefound = true;
-				event.put("type", "BT3_NEW");
-				// event.put("device", new DeviceProxy(dev1));
-				// event.put("open", readerNames);
-				// arrayForBlueToothDevice.add(dev1);
+				event.put("type", msg.what==DK.BT3_NEW? "BT": "BLE");
+				event.put("device", new DeviceProxy(dev));
+				 arrayForBlueToothDevice.add(dev);
 
 				break;
 
