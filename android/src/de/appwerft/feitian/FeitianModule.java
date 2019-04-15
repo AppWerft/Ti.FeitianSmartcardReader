@@ -125,6 +125,7 @@ public class FeitianModule extends KrollModule {
 	@Kroll.method
 	public FeitianModule find() {
 		try {
+			 arrayForBlueToothDevice.clear();
 			ftReader.readerFind();
 			return this;
 		} catch (FTException e) {
@@ -211,6 +212,7 @@ public class FeitianModule extends KrollModule {
 				String[] readerNames;
 				try {
 					Log.d(LCAT, "try readerOpen() " );
+					ftReader.readerPowerOn(0);
 					readerNames = ftReader.readerOpen(dev1);
 					Log.d(LCAT, "readerOpened " +readerNames.length);
 					devicefound = true;
