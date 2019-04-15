@@ -104,9 +104,11 @@ public class FeitianModule extends KrollModule {
 	@Kroll.constant
 	public static final int READER_UNKNOW = DK.READER_UNKNOW;
 
+	private int version=0;
 	public FeitianModule() {
 		super();
 		Log.d(LCAT, "Construct FeitianModule");
+		ftReader = new FTReader(ctx, mHandler, version);
 	}
 
 	@Kroll.onAppCreate
@@ -115,8 +117,12 @@ public class FeitianModule extends KrollModule {
 	}
 
 	@Kroll.method
-	public void find(int version) {
-		ftReader = new FTReader(ctx, mHandler, version);
+	public FeitianModule setVersion(int version) {
+		this.version = version;
+		return this;
+	}
+	@Kroll.method
+	public void find() {
 		try {
 			ftReader.readerFind();
 		} catch (FTException e) {
@@ -201,7 +207,7 @@ public class FeitianModule extends KrollModule {
 				Log.d(LCAT, "Device found: " + dev1.getName());
 				String[] readerNames;
 				try {
-					Log.d(LCAT, "try readerOpen " );
+					Log.d(LCAT, "try readerOpen() " );
 					readerNames = ftReader.readerOpen(dev1);
 					Log.d(LCAT, "readerOpened " +readerNames.length);
 					devicefound = true;
