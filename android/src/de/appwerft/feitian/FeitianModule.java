@@ -143,11 +143,12 @@ public class FeitianModule extends KrollModule {
 	public String[] openDevice(Object o) {
 		if (o instanceof DeviceProxy) {
 			try {
+				Log.d(LCAT,"try to openDevice …");
 				BluetoothDevice device = ((DeviceProxy) o).device;
 				String[] result = ftReader.readerOpen(device);
 				return result;
 			} catch (FTException e) {
-				// TODO Auto-generated catch block
+				Log.e(LCAT, e.getLocalizedMessage());
 				e.printStackTrace();
 				return null;
 			}
