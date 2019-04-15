@@ -213,7 +213,6 @@ public class FeitianModule extends KrollModule {
 				String[] readerNames;
 				try {
 					Log.d(LCAT, "try readerOpen() " );
-					Log.d(LCAT,ftReader.readerGetFirmwareVersion());
 					//ftReader.readerPowerOn(0);
 					readerNames = ftReader.readerOpen(dev);
 					Log.d(LCAT, "readerOpened " +readerNames.length);
