@@ -104,11 +104,12 @@ public class FeitianModule extends KrollModule {
 	@Kroll.constant
 	public static final int READER_UNKNOW = DK.READER_UNKNOW;
 
-	private int version=0;
+	private int version = 0;
+
 	public FeitianModule() {
 		super();
 		Log.d(LCAT, "Construct FeitianModule");
-		
+
 	}
 
 	@Kroll.onAppCreate
@@ -122,10 +123,11 @@ public class FeitianModule extends KrollModule {
 		ftReader = new FTReader(ctx, mHandler, version);
 		return this;
 	}
+
 	@Kroll.method
 	public FeitianModule find() {
 		try {
-			 arrayForBlueToothDevice.clear();
+			arrayForBlueToothDevice.clear();
 			ftReader.readerFind();
 			return this;
 		} catch (FTException e) {
@@ -138,7 +140,7 @@ public class FeitianModule extends KrollModule {
 	public String[] openDevice(Object o) {
 		if (o instanceof DeviceProxy) {
 			try {
-				BluetoothDevice device = ((DeviceProxy) o).device; 
+				BluetoothDevice device = ((DeviceProxy) o).device;
 				String[] result = ftReader.readerOpen(device);
 				return result;
 			} catch (FTException e) {
@@ -146,7 +148,8 @@ public class FeitianModule extends KrollModule {
 				e.printStackTrace();
 				return null;
 			}
-		} Log.w(LCAT, "property isn't device");
+		}
+		Log.w(LCAT, "property isn't device");
 		return null;
 	}
 
@@ -193,7 +196,7 @@ public class FeitianModule extends KrollModule {
 			case 0:
 				Log.d(LCAT, msg.obj.toString());
 				break;
-			
+
 			case DK.BT3_LOG:
 				Log.d(LCAT, "[BT3Log]:" + msg.obj);
 				break;
@@ -211,25 +214,18 @@ public class FeitianModule extends KrollModule {
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "Device found: " + dev.getName());
-				
-				try {
-					Log.d(LCAT, "try readerOpen() " );
-					//ftReader.readerPowerOn(0);
-					
-					devicefound = true;
-					event.put("type", "BT3_NEW");
-					// event.put("device", new DeviceProxy(dev1));
-				//	event.put("open", readerNames);
-				//	arrayForBlueToothDevice.add(dev1);
-					
-				} catch (FTException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+
+				Log.d(LCAT, "try readerOpen() ");
+				// ftReader.readerPowerOn(0);
+
+				devicefound = true;
+				event.put("type", "BT3_NEW");
+				// event.put("device", new DeviceProxy(dev1));
+				// event.put("open", readerNames);
+				// arrayForBlueToothDevice.add(dev1);
 
 				break;
 
-			
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
 				break;
