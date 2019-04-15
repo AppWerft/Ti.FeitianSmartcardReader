@@ -138,14 +138,15 @@ public class FeitianModule extends KrollModule {
 	public String[] openDevice(Object o) {
 		if (o instanceof DeviceProxy) {
 			try {
-				String[] result = ftReader.readerOpen(((DeviceProxy) o).device);
+				BluetoothDevice device = ((DeviceProxy) o).device; 
+				String[] result = ftReader.readerOpen(device);
 				return result;
 			} catch (FTException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return null;
 			}
-		}
+		} Log.w(LCAT, "property isn't device");
 		return null;
 	}
 
@@ -210,20 +211,17 @@ public class FeitianModule extends KrollModule {
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "Device found: " + dev.getName());
-				String[] readerNames;
+				
 				try {
 					Log.d(LCAT, "try readerOpen() " );
 					//ftReader.readerPowerOn(0);
-					readerNames = ftReader.readerOpen(dev);
-					Log.d(LCAT, "readerOpened " +readerNames.length);
+					
 					devicefound = true;
 					event.put("type", "BT3_NEW");
 					// event.put("device", new DeviceProxy(dev1));
 				//	event.put("open", readerNames);
 				//	arrayForBlueToothDevice.add(dev1);
-					for (int i = 0; i < readerNames.length; i++) {
-						Log.d(LCAT, "readerNames[" + i + "]:" + readerNames[i]);
-					}
+					
 				} catch (FTException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
