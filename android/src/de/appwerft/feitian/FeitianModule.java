@@ -207,6 +207,7 @@ public class FeitianModule extends KrollModule {
 				Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
 				break;
 			case DK.BT3_NEW:
+			case DK.BT4_NEW:
 				BluetoothDevice dev1 = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "Device found: " + dev1.getName());
 				String[] readerNames;
@@ -230,12 +231,7 @@ public class FeitianModule extends KrollModule {
 
 				break;
 
-			case DK.BT4_NEW:
-				BluetoothDevice dev2 = (BluetoothDevice) msg.obj;
-				arrayForBlueToothDevice.add(dev2);
-				event.put("type", "BT4_NEW");
-				event.put("device", new DeviceProxy(dev2));
-				break;
+			
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
 				break;
