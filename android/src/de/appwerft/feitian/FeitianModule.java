@@ -108,7 +108,7 @@ public class FeitianModule extends KrollModule {
 	public FeitianModule() {
 		super();
 		Log.d(LCAT, "Construct FeitianModule");
-		ftReader = new FTReader(ctx, mHandler, version);
+		
 	}
 
 	@Kroll.onAppCreate
@@ -117,16 +117,19 @@ public class FeitianModule extends KrollModule {
 	}
 
 	@Kroll.method
-	public FeitianModule setVersion(int version) {
+	public FeitianModule getInstance(int version) {
 		this.version = version;
+		ftReader = new FTReader(ctx, mHandler, version);
 		return this;
 	}
 	@Kroll.method
-	public void find() {
+	public FeitianModule find() {
 		try {
 			ftReader.readerFind();
+			return this;
 		} catch (FTException e) {
 			e.printStackTrace();
+			return this;
 		}
 	}
 
