@@ -138,7 +138,7 @@ public class FeitianModule extends KrollModule {
 	}
 
 	@Kroll.method
-	public String[] connect(Object o) {
+	public String[] readerOpen(Object o) {
 		return openDevice(o);
 	}
 
@@ -211,6 +211,7 @@ public class FeitianModule extends KrollModule {
 				devicefound = true;
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
 				event.put("device", new DeviceProxy(dev));
+				
 				arrayForBlueToothDevice.add(dev);
 				break;
 
