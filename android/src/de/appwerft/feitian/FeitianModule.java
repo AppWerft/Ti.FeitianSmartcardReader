@@ -217,7 +217,12 @@ public class FeitianModule extends KrollModule {
 				Log.d(LCAT, "Device found: " + dev.getName());
 
 				Log.d(LCAT, "try readerOpen() ");
-				// ftReader.readerPowerOn(0);
+				try {
+					ftReader.readerPowerOn(0);
+				} catch (FTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				devicefound = true;
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
@@ -241,10 +246,11 @@ public class FeitianModule extends KrollModule {
 				fireEvent("onfound", event);
 			}
 			if (devicefound && hasProperty("onFound")) {
+				Log.d(LCAT,"device found and onFound");
 				if (getProperty("onFound") instanceof KrollFunction) {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
 					onFound.callAsync(getKrollObject(), event);
-				}
+				} else Log.w(LCAT, "onFound != KrollFunction");
 			}
 		}
 	};
