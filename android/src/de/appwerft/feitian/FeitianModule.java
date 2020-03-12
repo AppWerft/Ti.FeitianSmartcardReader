@@ -215,18 +215,16 @@ public class FeitianModule extends KrollModule {
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "Device found: " + dev.getName());
-				Log.d(LCAT, "try readerOpen() ");
-						devicefound = true;
+				devicefound = true;
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
 				event.put("device", new DeviceProxy(dev));
-				
 				arrayForBlueToothDevice.add(dev);
 				break;
-
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
 				break;
 			default:
+				Log.d(LCAT,"default Result " + msg.what);
 				if ((msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK) {
 					return;
 				} else if ((msg.what & DK.CARD_OUT_MASK) == DK.CARD_OUT_MASK) {
@@ -237,13 +235,14 @@ public class FeitianModule extends KrollModule {
 			if (devicefound && hasListeners("onfound")) {
 				fireEvent("onfound", event);
 			}
+			Log.d(LCAT,"device found " + devicefound);
 			if (devicefound && hasProperty("onFound")) {
 				Log.d(LCAT,"device found and onFound");
 				if (getProperty("onFound") instanceof KrollFunction) {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
 					onFound.callAsync(getKrollObject(), event);
 				} else Log.w(LCAT, "onFound != KrollFunction");
-			}
+			} else Log.w(LCAT, "onFound missing");
 		}
 	};
 
