@@ -44,8 +44,8 @@ Do power on on card
 ### powerOff()
 Do power off on card
 
-### readXfr()
-Transfer APDU to card and get return data back
+### readXfr(String payload,function onLoad)
+Transfer APDU to card and get return data back in callback
 
 ### getSlotStatus()
 Get slot status, for example, card absent/present

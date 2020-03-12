@@ -27,6 +27,7 @@ import com.ftsafe.readerScheme.FTReader;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 
@@ -109,7 +110,8 @@ public class FeitianModule extends KrollModule {
 	public static final int MODUS_JAR = 0;
 
 	final static int PORT = 0x096e;
-
+	KrollFunction onRecv;
+	
 	public FeitianModule() {
 		super();
 		Log.d(LCAT, "Construct FeitianModule");
@@ -159,7 +161,16 @@ public class FeitianModule extends KrollModule {
 		Log.w(LCAT, "property isn't device");
 		return null;
 	}
-
+	
+	@Kroll.method
+	public void readXfr(String cmd, Object o) {
+		if (o instanceof KrollFunction)
+		onRecv = (KrollFunction)o;
+		AsyncTask<String, Void, byte[]> doRequest = new AsyncAdapter();
+		doRequest.execute(cmd);
+		
+	}
+	
 	@Kroll.method
 	public String powerOn() {
 		try {
@@ -248,4 +259,30 @@ public class FeitianModule extends KrollModule {
 			it.remove(); // avoids a ConcurrentModificationException
 		}
 	}
+	
+	private class AsyncAdapter extends AsyncTask<String, Void, byte[]>{
+		
+		@Override
+		protected byte[] doInBackground(String[] input) {
+			byte[] send = Utility.hexStrToBytes(input[0]);
+			byte[] recv= null;
+			try {
+				recv = ftReader.readerXfr(0,send);
+				Utility.bytes2HexStr(recv);
+			} catch (FTException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return recv;
+		}
+		protected void onPostExecute(byte[] result) {
+			if (onRecv != null) {
+				KrollDict res = new KrollDict();
+				res.put("data",Utility.bytes2HexStr(result));
+				onRecv.call(getKrollObject(), res);
+				
+			}
+		}
+	}
+
 }
