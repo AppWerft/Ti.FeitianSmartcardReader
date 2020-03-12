@@ -215,16 +215,8 @@ public class FeitianModule extends KrollModule {
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "Device found: " + dev.getName());
-
 				Log.d(LCAT, "try readerOpen() ");
-				try {
-					ftReader.readerPowerOn(0);
-				} catch (FTException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				devicefound = true;
+						devicefound = true;
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
 				event.put("device", new DeviceProxy(dev));
 				
