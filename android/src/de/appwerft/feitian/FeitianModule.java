@@ -190,7 +190,7 @@ public class FeitianModule extends KrollModule {
 			super.handleMessage(msg);
 			boolean devicefound = false;
 			KrollDict event = new KrollDict();
-			event.put("msgwhat", msg.what);
+			event.put("what", msg.what);
 			switch (msg.what) {
 			case -1:
 				return;
