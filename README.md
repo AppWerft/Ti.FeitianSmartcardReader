@@ -9,17 +9,34 @@ Demo app from provider:
 ![](https://api.qrserver.com/v1/create-qr-code/?data=http%3A%2F%2Fbit.ly%2F2GlDj5T&size=220x220&margin=0)
 
 
-## Methods
+## Module methods
+
+### readerFind()
+
+Find the reader, this method will scan BT to list the reader found. The response you can catch in property `onFound`:
+
+### readerOpen(device)
+Returns a reader list.
+
+```javascript
+const FTReader = require('de.appwerft.feitian');
+FTReader.onFound = function(reader) {
+	const device  = reader.device;
+	console.log(reader.what);
+	console.log(reader.type);
+	const readerlist = FTReader.readerOpen(device);
+	console.log(readerlist);
+}
+FTReader.readerFind();
+``` 
 
 
-### find()
-Find the reader, this method will scan BT  to list the reader found
 
-### open()
+### readerOpen()
 Connect the reader
 
-### close()
-Close the reader 
+### readerClose()
+The API will close all opened reader.
 
 ### powerOn()
 Do power on on card
@@ -40,15 +57,13 @@ Returns serial number, firmware version and other
 
 ```js
 const Reader = require('de.appwerft.feitian');
-Reader.Bluetooth.isAvailable();
 
-Reader.onConnect = function(device) {
-	
-};
-Reader.addEventListener("onComplete",function(e){
-	console.log(e);
-});
 Reader.find();
+
+Reader.onFound = function(device) {
+			
+};
+
 const type = Reader.getType();
 
 ```

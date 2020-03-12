@@ -37,10 +37,9 @@ public class FeitianModule extends KrollModule {
 
 	KrollDict callbacks = new KrollDict();
 
-	private FTReader ftReader;
+	public FTReader ftReader;
 	private int testi = 0;
 	private Context ctx = TiApplication.getInstance().getApplicationContext();
-	Tpcsc tpcsc = null;
 
 	ArrayList<BluetoothDevice> arrayForBlueToothDevice = new ArrayList<BluetoothDevice>();
 	ArrayList<DeviceProxy> arrayForBlueToothDeviceProxy = new ArrayList<DeviceProxy>();
@@ -104,7 +103,12 @@ public class FeitianModule extends KrollModule {
 	@Kroll.constant
 	public static final int READER_UNKNOW = DK.READER_UNKNOW;
 
-	private int version = 0;
+	@Kroll.constant
+	public static final int MODUS_JNI = 1;
+	@Kroll.constant
+	public static final int MODUS_JAR = 0;
+
+	final static int PORT = 0x096e;
 
 	public FeitianModule() {
 		super();
@@ -118,32 +122,31 @@ public class FeitianModule extends KrollModule {
 	}
 
 	@Kroll.method
-	public FeitianModule getInstance(int version) {
-		this.version = version;
-		ftReader = new FTReader(ctx, mHandler, version);
-		return this;
-	}
-
-	@Kroll.method
-	public FeitianModule find() {
+	public FeitianModule readerFind() {
 		try {
 			arrayForBlueToothDevice.clear();
-			ftReader.readerFind();
+			ftReader = new FTReader(ctx, mHandler, DK.FTREADER_TYPE_BT3);
+			if (ftReader != null)
+				ftReader.readerFind();
+			else
+				Log.w(LCAT, "ftReader is null");
 			return this;
 		} catch (FTException e) {
 			e.printStackTrace();
 			return this;
 		}
 	}
+
 	@Kroll.method
 	public String[] connect(Object o) {
 		return openDevice(o);
 	}
+
 	@Kroll.method
 	public String[] openDevice(Object o) {
 		if (o instanceof DeviceProxy) {
 			try {
-				Log.d(LCAT,"try to openDevice …");
+				Log.d(LCAT, "try to openDevice …");
 				BluetoothDevice device = ((DeviceProxy) o).device;
 				String[] result = ftReader.readerOpen(device);
 				return result;
@@ -168,23 +171,6 @@ public class FeitianModule extends KrollModule {
 			return null;
 		}
 
-	}
-
-	@Kroll.method
-
-	public KrollDict getType() {
-		KrollDict res = new KrollDict();
-		try {
-			res.put("manufacturer",
-					new String(ftReader.readerGetManufacturer())/* Utility.bytes2HexStr(manufacturer) */);
-			res.put("hardwareinfo", Utility.bytes2HexStr(ftReader.readerGetHardwareInfo()));
-			res.put("readername", new String(ftReader.readerGetReaderName()));
-			res.put("serialnumber", Utility.bytes2HexStr(ftReader.readerGetSerialNumber()));
-			return res;
-		} catch (FTException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	private Handler mHandler = new Handler() {
@@ -241,6 +227,12 @@ public class FeitianModule extends KrollModule {
 			}
 			if (devicefound && hasListeners("onfound")) {
 				fireEvent("onfound", event);
+			}
+			if (devicefound && hasProperty("onFound")) {
+				if (getProperty("onFound") instanceof KrollFunction) {
+					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
+					onFound.callAsync(getKrollObject(), event);
+				}
 			}
 		}
 	};

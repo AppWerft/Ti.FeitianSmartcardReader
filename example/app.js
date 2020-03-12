@@ -6,34 +6,36 @@
 
 // open a single window
 var win = Ti.UI.createWindow({
-	backgroundColor:'white'
+	backgroundColor:'white',
+	layout: 'vertical'
+	
 });
+const Reader = require('de.appwerft.feitian');
+const jniButton = Titanium.UI.createButton({title:"find",top:0});
+win.add(jniButton);
+jniButton.addEventListener('click',function(){
+    Reader.find();
+});
+
 var label = Ti.UI.createLabel();
 win.add(label);
 win.open();
 
 // TODO: write your module tests here
-var feitiansmartcardreader = require('de.appwerft.feitian');
-Ti.API.info("module is => " + feitiansmartcardreader);
 
-label.text = feitiansmartcardreader.example();
 
-Ti.API.info("module exampleProp is => " + feitiansmartcardreader.exampleProp);
-feitiansmartcardreader.exampleProp = "This is a test value";
 
-if (Ti.Platform.name == "android") {
-	var proxy = feitiansmartcardreader.createExample({
-		message: "Creating an example Proxy",
-		backgroundColor: "red",
-		width: 100,
-		height: 100,
-		top: 100,
-		left: 150
-	});
 
-	proxy.printMessage("Hello world!");
-	proxy.message = "Hi world!.  It's me again.";
-	proxy.printMessage("Hello world!");
-	win.add(proxy);
-}
+//Reader.Bluetooth.isAvailable();
+/*
+Reader.onConnect = function(device) {
+     console.log(device);
+};
+Reader.addEventListener("onComplete",function(e){
+    console.log(e);
+});
 
+Reader.find();
+
+const type = Reader.getType();
+*/

@@ -1,11 +1,16 @@
 package de.appwerft.feitian;
 
-public class Tpcsc {
+import org.appcelerator.kroll.common.Log;
 
+
+
+public class Tpcsc {
+	public static final String LCAT = FeitianModule.LCAT;
 	// public Tpcsc(){
 	//
 	// }
 	public Tpcsc(int port) {
+		Log.d(LCAT,"try to start Tpcsc …");
 		init(port);
 	}
 

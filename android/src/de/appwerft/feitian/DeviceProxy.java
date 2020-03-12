@@ -29,7 +29,7 @@ public class DeviceProxy extends KrollProxy {
 	
 	public DeviceProxy(BluetoothDevice device) {
 		super();
-		this.device=device;
+		this.device = device;
 	}
 	
 	public BluetoothDevice getDevice() {
@@ -37,23 +37,29 @@ public class DeviceProxy extends KrollProxy {
 	}
 	
 	@Kroll.method
+	@Kroll.getProperty
 	public String getName() {
 		return device.getName();
 	}
+	
 	@Kroll.method
-	public KrollDict getDetails() {
-		KrollDict res = new KrollDict();
-		res.put("address", device.getAddress());
-		res.put("name", device.getName());
-		res.put("bondState", device.getBondState());
-		res.put("type", device.getType());
-		
-		return res;
-	}
-	@Kroll.method
+	@Kroll.getProperty
 	public String getAddress() {
 		return device.getAddress();
 	}
+	
+	@Kroll.method
+	@Kroll.getProperty
+	public int getBondState() {
+		return device.getBondState();
+	}
+	
+	@Kroll.method
+	@Kroll.getProperty
+	public int getType() {
+		return device.getType();
+	}
+	
 	@Kroll.method
 	public void readData() {
 				
