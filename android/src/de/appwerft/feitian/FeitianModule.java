@@ -161,7 +161,16 @@ public class FeitianModule extends KrollModule {
 		Log.w(LCAT, "property isn't device");
 		return null;
 	}
-	
+	@Kroll.method
+	public int readerGetSlotStatus() {
+		int state = 0;
+		try {
+			state = ftReader.readerGetSlotStatus(0);
+		} catch (FTException e) {
+			e.printStackTrace();
+		}
+		return state;
+	}
 	@Kroll.method
 	public void readXfr(String cmd, Object o) {
 		if (o instanceof KrollFunction)
@@ -225,9 +234,14 @@ public class FeitianModule extends KrollModule {
 				break;
 			default:
 				Log.d(LCAT,"default Result " + msg.what);
+				KrollDict res = new KrollDict();
 				if ((msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK) {
+					res.put("status",true);
+					if (hasListeners("cardChanged")) fireEvent("cardChanged",res);
 					return;
 				} else if ((msg.what & DK.CARD_OUT_MASK) == DK.CARD_OUT_MASK) {
+					res.put("status",false);
+					if (hasListeners("cardChanged")) fireEvent("cardChanged",res);
 					return;
 				}
 				break;
