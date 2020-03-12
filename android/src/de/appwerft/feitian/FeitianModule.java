@@ -31,7 +31,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 
-@Kroll.module(name = "Feitian", id = "de.appwerft.feitian", propertyAccessors = { "onConnect", "onError" })
+@Kroll.module(name = "Feitian", id = "de.appwerft.feitian", propertyAccessors = { "onFound","onConnect", "onError" })
 public class FeitianModule extends KrollModule {
 
 	public static final String LCAT = "🧩TiFeitian";
