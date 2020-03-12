@@ -53,17 +53,3 @@ Get slot status, for example, card absent/present
 ### getType()
 Returns serial number, firmware version and other
 
-## Usage
-
-```js
-const Reader = require('de.appwerft.feitian');
-
-Reader.find();
-
-Reader.onFound = function(device) {
-			
-};
-
-const type = Reader.getType();
-
-```
