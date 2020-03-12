@@ -66,7 +66,7 @@ const COMMANDS = {
     'SELECT_FILE_PD': "00B0810002",
     'SELECT_FILE_VD': "00B0820008"
 };
-FTreader.readEgk(COMMANDS.SElECT_MF,function(e){
+FTreader.readEgk(COMMANDS.SELECT_MF,function(e){
 	console.log(e.data)
 });
 
