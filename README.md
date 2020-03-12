@@ -53,3 +53,21 @@ Get slot status, for example, card absent/present
 ### getType()
 Returns serial number, firmware version and other
 
+
+## Communication with German eGK
+
+``` javascript
+const COMMANDS = {
+    'SELECT_MF': "00A4040C07D2760001448000",
+    'SELECT_HCA': "00A4040C06D27600000102",
+    'EF_VERSION_1': "00B2018400",
+    'EF_VERSION_2': "00B2028400",
+    'EF_VERSION_3': "00B2038400",
+    'SELECT_FILE_PD': "00B0810002",
+    'SELECT_FILE_VD': "00B0820008"
+};
+FTreader.readEgk(COMMANDS.SElECT_MF,function(e){
+	console.log(e.data)
+});
+
+```
