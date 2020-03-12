@@ -42,7 +42,7 @@ The API will close all opened reader.
 Do power on on card
 
 ### powerOff()
-Do power off on card
+The readerPowerOff API using to power off the card.
 
 ### readXfr(String payload,function onLoad)
 Transfer APDU to card and get return data back in callback
@@ -52,6 +52,9 @@ Get slot status, for example, card absent/present
 
 ### getType()
 Returns serial number, firmware version and other
+
+### readerAutoTurnOff(true|false)
+The readerAutoTurnOff API using to set the power saving feature, the BLE reader was designed with auto power on, if without any data communicate with reader, it will be going to turn off automatically, the purpose is to saving battery. 
 
 
 ## Communication with German eGK
