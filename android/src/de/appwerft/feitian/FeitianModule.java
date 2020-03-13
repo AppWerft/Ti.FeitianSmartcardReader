@@ -261,11 +261,10 @@ public class FeitianModule extends KrollModule {
 				Log.d(LCAT, "Device found: " + dev.getName());
 				
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
-				
-				
 				event.put("device", new DeviceProxy(dev));
 				try {
 					devicefound = true;
+					Log.d(LCAT,"device found try open");
 					ftReader.readerOpen(dev);
 					event.put("status", ftReader.readerGetSlotStatus(0));
 				} catch (FTException e) {
