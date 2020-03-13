@@ -291,11 +291,13 @@ public class FeitianModule extends KrollModule {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
 					try {
 						String[] devices = ftReader.readerOpen(arrayForBlueToothDevice.get(0));
+						
 						event.put("devices" ,devices);
+						byte[] atr = ftReader.readerPowerOn(0);
+						
 						event.put("status", ftReader.readerGetSlotStatus(0));
 						onFound.callAsync(getKrollObject(), event);
 					} catch (FTException e) {
-						
 						e.printStackTrace();
 					}
 					
