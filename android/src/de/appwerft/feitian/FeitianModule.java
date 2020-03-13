@@ -253,7 +253,7 @@ public class FeitianModule extends KrollModule {
 			case DK.FTREADER_LOG:
 				break;
 			case DK.CCIDSCHEME_LOG:
-				Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
+				//Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
 				break;
 			case DK.BT3_NEW:
 			case DK.BT4_NEW:
