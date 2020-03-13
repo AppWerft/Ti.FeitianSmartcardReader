@@ -56,17 +56,7 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 			return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
 		
 	}
-	private byte[] transmit(String apdu) {
-		try {
-			byte[] res = ftReader.readerXfr(0, Utility.hexStrToBytes(apdu));
-			Log.d(LCAT,Utility.bytes2HexStr(res));
-			return res;
-		} catch (FTException e) {
-			Log.d(LCAT,"FTException "+e.getLocalizedMessage());
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 	private byte[] transmit(byte[] apdu) {
 		try {
 			byte[] res = ftReader.readerXfr(0,apdu);
@@ -114,11 +104,6 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-
-		
 		return recv;
 	}
 
