@@ -39,7 +39,6 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 	}
 
 	private String getPatientData() throws IOException {
-		byte[] READ_PD = new byte[] { 0x00, (byte) 0xb0, (byte) (0x80 + 0x01), 0x00, 0x00, 0x00, 0x00 };
 		byte[] pd;
 		try {
 			transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
