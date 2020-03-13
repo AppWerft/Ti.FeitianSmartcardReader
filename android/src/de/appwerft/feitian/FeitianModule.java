@@ -167,7 +167,6 @@ public class FeitianModule extends KrollModule {
 				return result;
 			} catch (FTException e) {
 				Log.e(LCAT, e.getLocalizedMessage());
-				
 				return null;
 			}
 		}
@@ -207,9 +206,11 @@ public class FeitianModule extends KrollModule {
 	public boolean readerAutoTurnOff(boolean state) {
 		try {
 			ftReader.FT_AutoTurnOffReader(state);
+			return true;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 	@Kroll.method
