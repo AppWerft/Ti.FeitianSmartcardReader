@@ -43,6 +43,10 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		try {
 			transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
 			pd = transmit(APDU.getCmd(APDU.READ_PD));
+			/*
+			 * [com.ftsafe.readerScheme.FTReader:readerXfr]
+			 * [apdu send recv error][java.lang.Exception: apdu send recv error]
+			 */
 			int pdLength = ((pd[0] & 0xff) << 8) | (pd[1] & 0xff);
 			Log.d(LCAT, "Length of pd =" + pdLength);
 			byte[] pdDataCompressed = new byte[pdLength];
