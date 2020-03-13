@@ -261,14 +261,15 @@ public class FeitianModule extends KrollModule {
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
 				try {
 					devicefound = true;
-					Log.d(LCAT,"device found try open " +dev.getName());
-					ftReader.readerOpen(dev);
+					Log.d(LCAT,"device found try open " + dev.getName());
+					//ftReader.readerOpen(dev);
 					event.put("status", ftReader.readerGetSlotStatus(0));
+					arrayForBlueToothDevice.add(dev);
+					
 				} catch (FTException e) {
 					Log.e(LCAT, e.getMessage());
 					e.printStackTrace();
 				}
-				arrayForBlueToothDevice.add(dev);
 				break;
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
