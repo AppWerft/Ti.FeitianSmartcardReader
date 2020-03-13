@@ -44,6 +44,9 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		// Since the two bytes are included themselves those two bytes are subtracted from the length.
 		//int pdLength = 8*data[0]+data[1]-2;
 		byte[] pd = transmit(APDU.getCmd(APDU.READ_PD));
+		Log.d(LCAT,"Length of raw pd ="+ pd.length);
+		Log.d(LCAT,"first 2 bytes =" + pd[0] + pd[1]);
+
 		int pdLength = ((pd[0] & 0xff) << 8) | (pd[1] & 0xff);
 		Log.d(LCAT,"Length of pd ="+ pdLength);
 		
