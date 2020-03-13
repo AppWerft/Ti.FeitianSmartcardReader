@@ -12,7 +12,9 @@ public class APDU {
 	public static final String EF_VERSION_3 = "00B2038400";
 	public static final String SELECT_FILE_PD = "00B0810002";
 	public static final String SELECT_FILE_VD = "00B0820008";
-	public static final String READ_PD = "00B0800100000000";
+	
+	public static final String READ_PD = "00B08100000000";
+	
 	public static final String AUTOPOWEROFF_OFF = "A55A8031";
 	public static final String AUTOPOWEROFF_ON = "A55A8030";
 	

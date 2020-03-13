@@ -82,7 +82,6 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		Log.d(LCAT, "doInBackground started");
 		// Select Masterfile (root)
 		try {
-			transmit(APDU.getCmd(APDU.AUTOPOWEROFF_OFF));
 			transmit(APDU.getCmd(APDU.SELECT_MF));
 			transmit(APDU.getCmd(APDU.SELECT_HCA));
 		} catch (FTException e1) {
