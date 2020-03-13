@@ -2,6 +2,7 @@ package de.appwerft.feitian;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import com.ftsafe.Utility;
 // https://github.com/patrick-werner/EGKfhir/blob/master/src/main/java/de/gecko/egkfeuer/service/CardReaderServiceImpl.java
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
@@ -46,14 +47,11 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		// from the length.
 		// int pdLength = 8*data[0]+data[1]-2;
 		byte[] READ_PD = new byte[] { 0x00, (byte) 0xb0, (byte) (0x80 + 0x01), 0x00, 0x00, 0x00, 0x00 };
-
-		
-		Log.d(LCAT, "READ_PD try to send");
+		Log.d(LCAT, "READ_PD try to send = "+ Utility.bytes2HexStr(READ_PD));
 		byte[] pd;
 		try {
 			pd = transmit(READ_PD);
 			Log.d(LCAT, "READ_PD sent");
-			
 			Log.d(LCAT, "Length of raw pd =" + pd.length);
 			Log.d(LCAT, "first 2 bytes =" + pd[0] + pd[1]);
 
@@ -64,7 +62,7 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 			return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
 		
 		} catch (FTException e) {
-			
+			Log.e(LCAT,e.getLocalizedMessage());
 			e.printStackTrace();
 		}
 		
