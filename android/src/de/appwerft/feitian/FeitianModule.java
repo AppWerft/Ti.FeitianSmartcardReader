@@ -264,7 +264,7 @@ public class FeitianModule extends KrollModule {
 				event.put("device", new DeviceProxy(dev));
 				try {
 					devicefound = true;
-					Log.d(LCAT,"device found try open");
+					Log.d(LCAT,"device found try open " +dev.getName());
 					ftReader.readerOpen(dev);
 					event.put("status", ftReader.readerGetSlotStatus(0));
 				} catch (FTException e) {
