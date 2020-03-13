@@ -151,7 +151,7 @@ public class FeitianModule extends KrollModule {
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false,
+			return false;
 		}
 	}
 
