@@ -159,8 +159,8 @@ public class FeitianModule extends KrollModule {
 	public String[] openDevice(Object o) {
 		if (o instanceof DeviceProxy) {
 			try {
-				ftReader.readerPowerOff(0);
-				ftReader.readerPowerOn(0);
+				//ftReader.readerPowerOff(0);
+				//ftReader.readerPowerOn(0);
 				Log.d(LCAT, "try to openDevice …");
 				BluetoothDevice device = ((DeviceProxy) o).device;
 				String[] result = ftReader.readerOpen(device);
