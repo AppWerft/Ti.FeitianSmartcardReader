@@ -55,6 +55,11 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		} catch (FTException e) {
 			Log.e(LCAT,e.getLocalizedMessage());	
 			e.printStackTrace();
+			try {
+				ftReader.readerClose();
+			} catch (FTException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		return null; 
