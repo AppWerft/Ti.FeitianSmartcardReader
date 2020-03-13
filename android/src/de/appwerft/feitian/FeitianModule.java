@@ -189,6 +189,11 @@ public class FeitianModule extends KrollModule {
 		doRequest.execute();
 	}
 
+	
+	@Kroll.method
+	public void readerAutoTurnOff(boolean state) {
+		
+	}
 	@Kroll.method
 	public String powerOn() {
 		try {
