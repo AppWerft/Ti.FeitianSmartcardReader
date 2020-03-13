@@ -31,7 +31,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 
-@Kroll.module(name = "Feitian", id = "de.appwerft.feitian", propertyAccessors = { "onFound","onConnect", "onError" })
+@Kroll.module(name = "Feitian", id = "de.appwerft.feitian", propertyAccessors = { "onFound", "onConnect", "onError" })
 public class FeitianModule extends KrollModule {
 
 	public static final String LCAT = "🧩TiFeitian";
@@ -111,7 +111,7 @@ public class FeitianModule extends KrollModule {
 
 	final static int PORT = 0x096e;
 	KrollFunction onRecv;
-	
+
 	public FeitianModule() {
 		super();
 		Log.d(LCAT, "Construct FeitianModule");
@@ -161,6 +161,7 @@ public class FeitianModule extends KrollModule {
 		Log.w(LCAT, "property isn't device");
 		return null;
 	}
+
 	@Kroll.method
 	public int readerGetSlotStatus() {
 		int state = 0;
@@ -171,22 +172,23 @@ public class FeitianModule extends KrollModule {
 		}
 		return state;
 	}
+
 	@Kroll.method
 	public void readXfr(String cmd, Object o) {
 		if (o instanceof KrollFunction)
-		onRecv = (KrollFunction)o;
+			onRecv = (KrollFunction) o;
 		AsyncTask<String, Void, byte[]> doRequest = new AsyncAdapter();
 		doRequest.execute(cmd);
 	}
-	
+
 	@Kroll.method
-	public void readEgk(String cmd, Object o) {
+	public void getHealthCard(Object o) {
 		if (o instanceof KrollFunction)
-		onRecv = (KrollFunction)o;
-		AsyncTask<String, Void, byte[]> doRequest = new EgkAdapter();
-		doRequest.execute(cmd);
+			onRecv = (KrollFunction) o;
+		AsyncTask<Void, Void, byte[]> doRequest = new HealthCardAsyncAdapter(getKrollObject(),onRecv, ftReader);
+		doRequest.execute();
 	}
-	
+
 	@Kroll.method
 	public String powerOn() {
 		try {
@@ -240,15 +242,17 @@ public class FeitianModule extends KrollModule {
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
 				break;
 			default:
-				Log.d(LCAT,"default Result " + msg.what);
+				Log.d(LCAT, "default Result " + msg.what);
 				KrollDict res = new KrollDict();
 				if ((msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK) {
-					res.put("status",true);
-					if (hasListeners("cardChanged")) fireEvent("cardChanged",res);
+					res.put("status", true);
+					if (hasListeners("cardChanged"))
+						fireEvent("cardChanged", res);
 					return;
 				} else if ((msg.what & DK.CARD_OUT_MASK) == DK.CARD_OUT_MASK) {
-					res.put("status",false);
-					if (hasListeners("cardChanged")) fireEvent("cardChanged",res);
+					res.put("status", false);
+					if (hasListeners("cardChanged"))
+						fireEvent("cardChanged", res);
 					return;
 				}
 				break;
@@ -256,14 +260,16 @@ public class FeitianModule extends KrollModule {
 			if (devicefound && hasListeners("onFound")) {
 				fireEvent("onFound", event);
 			}
-			Log.d(LCAT,"device found " + devicefound);
+			Log.d(LCAT, "device found " + devicefound);
 			if (devicefound && hasProperty("onFound")) {
-				Log.d(LCAT,"device found and onFound");
+				Log.d(LCAT, "device found and onFound");
 				if (getProperty("onFound") instanceof KrollFunction) {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
 					onFound.callAsync(getKrollObject(), event);
-				} else Log.w(LCAT, "onFound != KrollFunction");
-			} else Log.w(LCAT, "onFound missing");
+				} else
+					Log.w(LCAT, "onFound != KrollFunction");
+			} else
+				Log.w(LCAT, "onFound missing");
 		}
 	};
 
@@ -277,15 +283,15 @@ public class FeitianModule extends KrollModule {
 			it.remove(); // avoids a ConcurrentModificationException
 		}
 	}
-	
-	private class AsyncAdapter extends AsyncTask<String, Void, byte[]>{
-		
+
+	private class AsyncAdapter extends AsyncTask<String, Void, byte[]> {
+
 		@Override
 		protected byte[] doInBackground(String[] input) {
 			byte[] send = Utility.hexStrToBytes(input[0]);
-			byte[] recv= null;
+			byte[] recv = null;
 			try {
-				recv = ftReader.readerXfr(0,send);
+				recv = ftReader.readerXfr(0, send);
 				Utility.bytes2HexStr(recv);
 			} catch (FTException e) {
 				// TODO Auto-generated catch block
@@ -293,36 +299,13 @@ public class FeitianModule extends KrollModule {
 			}
 			return recv;
 		}
+
 		protected void onPostExecute(byte[] result) {
 			if (onRecv != null) {
 				KrollDict res = new KrollDict();
-				res.put("data",Utility.bytes2HexStr(result));
+				res.put("data", Utility.bytes2HexStr(result));
 				onRecv.call(getKrollObject(), res);
-				
-			}
-		}
-	}
-private class EgkAdapter extends AsyncTask<String, Void, byte[]>{
-		
-		@Override
-		protected byte[] doInBackground(String[] input) {
-			byte[] send = Utility.hexStrToBytes(input[0]);
-			byte[] recv= null;
-			try {
-				recv = ftReader.readerXfr(0,send);
-				Utility.bytes2HexStr(recv);
-			} catch (FTException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return recv;
-		}
-		protected void onPostExecute(byte[] result) {
-			if (onRecv != null) {
-				KrollDict res = new KrollDict();
-				res.put("data",Utility.bytes2HexStr(result));
-				onRecv.call(getKrollObject(), res);
-				
+
 			}
 		}
 	}

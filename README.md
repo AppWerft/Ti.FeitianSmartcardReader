@@ -57,19 +57,10 @@ Returns serial number, firmware version and other
 The readerAutoTurnOff API using to set the power saving feature, the BLE reader was designed with auto power on, if without any data communicate with reader, it will be going to turn off automatically, the purpose is to saving battery. 
 
 
-## Communication with German eGK
+## Communication with German „elektronische Gesundheitskarte eGK“
 
 ``` javascript
-const COMMANDS = {
-    'SELECT_MF': "00A4040C07D2760001448000",
-    'SELECT_HCA': "00A4040C06D27600000102",
-    'EF_VERSION_1': "00B2018400",
-    'EF_VERSION_2': "00B2028400",
-    'EF_VERSION_3': "00B2038400",
-    'SELECT_FILE_PD': "00B0810002",
-    'SELECT_FILE_VD': "00B0820008"
-};
-FTreader.readEgk(COMMANDS.SELECT_MF,function(e){
+FTreader.getHealthCard(function(e) {
 	console.log(e.data)
 });
 

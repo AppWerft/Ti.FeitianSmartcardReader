@@ -13,5 +13,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/IOT/Ti.FeitianSmartcardReader/android/lib/ftsafe_0.7.04.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Documents/APPC_WORKSPACE/IOT/Ti.FeitianSmartcardReader/android/lib/org.apache.commons.io.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
