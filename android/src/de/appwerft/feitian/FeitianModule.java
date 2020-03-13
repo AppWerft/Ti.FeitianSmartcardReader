@@ -104,17 +104,15 @@ public class FeitianModule extends KrollModule {
 	@Kroll.constant
 	public static final int READER_UNKNOW = DK.READER_UNKNOW;
 
-	@Kroll.constant
-	public static final int MODUS_JNI = 1;
-	@Kroll.constant
-	public static final int MODUS_JAR = 0;
+	
 
-	final static int PORT = 0x096e;
+	
 	KrollFunction onRecv;
 
 	public FeitianModule() {
 		super();
 		Log.d(LCAT, "Construct FeitianModule");
+		Log.d(LCAT,"🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩");
 
 	}
 
