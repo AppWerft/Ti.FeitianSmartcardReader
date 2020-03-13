@@ -206,6 +206,18 @@ public class FeitianModule extends KrollModule {
 		}
 
 	}
+	@Kroll.method
+	public String powerOff() {
+		try {
+			byte[] bytes = ftReader.readerPowerOff(0);
+			return null;
+		} catch (FTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	private Handler mHandler = new Handler() {
 		@Override
