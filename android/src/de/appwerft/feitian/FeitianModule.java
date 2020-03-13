@@ -206,14 +206,14 @@ public class FeitianModule extends KrollModule {
 		try {
 			ftReader.FT_AutoTurnOffReader(state);
 		} catch (FTException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 	@Kroll.method
 	public String powerOn() {
 		try {
-			byte[] bytes = ftReader.readerPowerOn(0);
+			ftReader.readerPowerOn(0);
 			return null;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
