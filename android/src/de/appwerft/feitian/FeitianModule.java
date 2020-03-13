@@ -259,17 +259,13 @@ public class FeitianModule extends KrollModule {
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
-				try {
+				
 					devicefound = true;
 					Log.d(LCAT,"device found try open " + dev.getName());
-					//ftReader.readerOpen(dev);
-					event.put("status", ftReader.readerGetSlotStatus(0));
+					
 					arrayForBlueToothDevice.add(dev);
 					
-				} catch (FTException e) {
-					Log.e(LCAT, e.getMessage());
-					e.printStackTrace();
-				}
+				
 				break;
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
@@ -293,7 +289,15 @@ public class FeitianModule extends KrollModule {
 			if (devicefound && hasProperty("onFound")) {
 				if (getProperty("onFound") instanceof KrollFunction) {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
-					onFound.callAsync(getKrollObject(), event);
+					try {
+						ftReader.readerOpen(arrayForBlueToothDevice.get(0));
+						event.put("status", ftReader.readerGetSlotStatus(0));
+						onFound.callAsync(getKrollObject(), event);
+					} catch (FTException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				} else
 					Log.w(LCAT, "onFound != KrollFunction");
 			}
