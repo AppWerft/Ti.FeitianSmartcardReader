@@ -159,14 +159,13 @@ public class FeitianModule extends KrollModule {
 	public String[] openDevice(Object o) {
 		if (o instanceof DeviceProxy) {
 			try {
-				//ftReader.readerPowerOff(0);
-				//ftReader.readerPowerOn(0);
 				Log.d(LCAT, "try to openDevice …");
 				BluetoothDevice device = ((DeviceProxy) o).device;
 				String[] result = ftReader.readerOpen(device);
 				return result;
 			} catch (FTException e) {
 				Log.e(LCAT, e.getLocalizedMessage());
+				e.printStackTrace();
 				return null;
 			}
 		}
@@ -203,14 +202,12 @@ public class FeitianModule extends KrollModule {
 
 	
 	@Kroll.method
-	public boolean readerAutoTurnOff(boolean state) {
+	public void readerAutoTurnOff(boolean state) {
 		try {
 			ftReader.FT_AutoTurnOffReader(state);
-			return true;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
 		}
 	}
 	@Kroll.method
