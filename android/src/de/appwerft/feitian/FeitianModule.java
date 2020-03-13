@@ -167,13 +167,7 @@ public class FeitianModule extends KrollModule {
 				return result;
 			} catch (FTException e) {
 				Log.e(LCAT, e.getLocalizedMessage());
-				try {
-					
-					
-				} catch (FTException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				
 				return null;
 			}
 		}
