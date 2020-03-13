@@ -143,6 +143,17 @@ public class FeitianModule extends KrollModule {
 	public String[] readerOpen(Object o) {
 		return openDevice(o);
 	}
+	@Kroll.method
+	public boolean readerClose() {
+		try {
+			ftReader.readerClose();
+			return true;
+		} catch (FTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false,
+		}
+	}
 
 	@Kroll.method
 	public String[] openDevice(Object o) {
