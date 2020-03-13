@@ -294,7 +294,7 @@ public class FeitianModule extends KrollModule {
 						
 						event.put("devices" ,devices);
 						byte[] atr = ftReader.readerPowerOn(0);
-						
+						event.put("atr", Utility.bytes2HexStr(atr));
 						event.put("status", ftReader.readerGetSlotStatus(0));
 						onFound.callAsync(getKrollObject(), event);
 					} catch (FTException e) {
