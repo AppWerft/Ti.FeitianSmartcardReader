@@ -211,29 +211,27 @@ public class FeitianModule extends KrollModule {
 		}
 	}
 	@Kroll.method
-	public String powerOn() {
+	public boolean powerOn() {
 		try {
 			ftReader.readerPowerOn(0);
-			return null;
+			return true;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			return false;
 		}
 
 	}
 	@Kroll.method
-	public String powerOff() {
-		
+	public boolean powerOff() {
 		try {
 			ftReader.readerPowerOff(0);
+			return true;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			return null;
-		
-
+		return false;
 	}
 
 	private Handler mHandler = new Handler() {
