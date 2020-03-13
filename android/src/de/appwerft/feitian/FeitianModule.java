@@ -220,14 +220,14 @@ public class FeitianModule extends KrollModule {
 				Log.d(LCAT, "[BT3Log]:" + msg.obj);
 				break;
 			case DK.BT4_LOG:
-				Log.d(LCAT, "[BT4Log]:" + msg.obj);
+			//	Log.d(LCAT, "[BT4Log]:" + msg.obj);
 				break;
 			case DK.FTREADER_LOG:
-				Log.d(LCAT, "[FTReaderLog]:" + msg.obj);
+			//	Log.d(LCAT, "[FTReaderLog]:" + msg.obj);
 				break;
 			case DK.CCIDSCHEME_LOG:
 				event.put("type", "CCIDSchemeLog");
-				Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
+			//	Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
 				break;
 			case DK.BT3_NEW:
 			case DK.BT4_NEW:
@@ -262,14 +262,12 @@ public class FeitianModule extends KrollModule {
 			}
 			Log.d(LCAT, "device found " + devicefound);
 			if (devicefound && hasProperty("onFound")) {
-				Log.d(LCAT, "device found and onFound");
 				if (getProperty("onFound") instanceof KrollFunction) {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
 					onFound.callAsync(getKrollObject(), event);
 				} else
 					Log.w(LCAT, "onFound != KrollFunction");
-			} else
-				Log.w(LCAT, "onFound missing");
+			}
 		}
 	};
 

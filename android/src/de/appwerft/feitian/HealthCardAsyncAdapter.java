@@ -43,7 +43,9 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		
 		// Since the two bytes are included themselves those two bytes are subtracted from the length.
 		//int pdLength = 8*data[0]+data[1]-2;
+		Log.d(LCAT,"READ_PD try to send");
 		byte[] pd = transmit(APDU.getCmd(APDU.READ_PD));
+		Log.d(LCAT,"READ_PD sent");
 		Log.d(LCAT,"Length of raw pd ="+ pd.length);
 		Log.d(LCAT,"first 2 bytes =" + pd[0] + pd[1]);
 
@@ -97,7 +99,7 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		
 		// Select file containing patient data
 		//transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
-		Log.d(LCAT,"SELECT_FILE_PD started");
+		//Log.d(LCAT,"SELECT_FILE_PD started");
 		try {
 			String patientContent = getPatientData();
 			KrollDict res = new KrollDict();
