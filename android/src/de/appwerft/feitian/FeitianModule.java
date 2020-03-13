@@ -265,7 +265,6 @@ public class FeitianModule extends KrollModule {
 			if (devicefound && hasListeners("onFound")) {
 				fireEvent("onFound", event);
 			}
-			Log.d(LCAT, "device found " + devicefound);
 			if (devicefound && hasProperty("onFound")) {
 				if (getProperty("onFound") instanceof KrollFunction) {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));

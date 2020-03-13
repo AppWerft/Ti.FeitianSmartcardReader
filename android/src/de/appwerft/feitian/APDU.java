@@ -13,8 +13,8 @@ public class APDU {
 	public static final String SELECT_FILE_PD = "00B0810002";
 	public static final String SELECT_FILE_VD = "00B0820008";
 	public static final String READ_PD = "00B0800100000000";
-	public static final String AUTO_POWEROFF_OFF = "A55A8031";
-	public static final String AUTO_POWEROFF_ON = "A55A8030";
+	public static final String AUTOPOWEROFF_OFF = "A55A8031";
+	public static final String AUTOPOWEROFF_ON = "A55A8030";
 	
 	public static byte[] getCmd(String cmd) {
 		return hexStringToBytes(cmd);
