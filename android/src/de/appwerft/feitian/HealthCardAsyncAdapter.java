@@ -49,13 +49,9 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 
 		int pdLength = ((pd[0] & 0xff) << 8) | (pd[1] & 0xff);
 		Log.d(LCAT,"Length of pd ="+ pdLength);
-		
-		
 			byte[] pdDataCompressed = new byte[pdLength];
 			System.arraycopy(pd, 2, pdDataCompressed, 0, pdLength);
-
 			return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
-		
 		
 	}
 	private byte[] transmit(String apdu) {
@@ -77,22 +73,11 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		return null;
 	}
 	
-	private String  createReadCommand(int pos, int length) { // 0x00, 0x02
-		ByteBuffer cmd = ByteBuffer.allocate(5);
-		cmd.put(0,(byte) 0x00);
-		cmd.put(1,(byte) 0xB0);
-		cmd.putInt(2,pos);
-		cmd.putInt(4,length);
-        return Utility.bytes2HexStr(cmd.array());
-	}   		
-	
-	
-	
 	@Override
 	protected byte[] doInBackground(Void... arg0) {
 		byte[] recv = null;
 		String generation ="";
-		
+		Log.d(LCAT,"doInBackground started");
 		// Select Masterfile (root)
 		transmit(APDU.getCmd(APDU.SELECT_MF));
 		
@@ -111,8 +96,8 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		transmit(APDU.getCmd(APDU.SELECT_HCA));
 		
 		// Select file containing patient data
-		transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
-		
+		//transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
+		Log.d(LCAT,"SELECT_FILE_PD started");
 		try {
 			String patientContent = getPatientData();
 			KrollDict res = new KrollDict();
