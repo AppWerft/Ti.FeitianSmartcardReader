@@ -220,7 +220,12 @@ public class FeitianModule extends KrollModule {
 	@Kroll.method
 	public String powerOff() {
 		
-			//byte[] bytes = ftReader.readerPowerOff(0);
+		try {
+			ftReader.readerPowerOff(0);
+		} catch (FTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			return null;
 		
 
