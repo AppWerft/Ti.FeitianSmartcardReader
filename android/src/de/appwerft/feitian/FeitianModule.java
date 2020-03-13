@@ -125,6 +125,7 @@ public class FeitianModule extends KrollModule {
 	public FeitianModule readerFind(int type) {
 		try {
 			arrayForBlueToothDevice.clear();
+			Log.d(LCAT,"type="+type);
 			ftReader = new FTReader(ctx, mHandler, type);
 			if (ftReader != null)
 				ftReader.readerFind();
