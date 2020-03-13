@@ -243,36 +243,41 @@ public class FeitianModule extends KrollModule {
 			case -1:
 				return;
 			case 0:
-				Log.d(LCAT, msg.obj.toString());
 				break;
-
 			case DK.BT3_LOG:
 				Log.d(LCAT, "[BT3Log]:" + msg.obj);
 				break;
 			case DK.BT4_LOG:
-			//	Log.d(LCAT, "[BT4Log]:" + msg.obj);
+				Log.d(LCAT, "[BT4Log]:" + msg.obj);
 				break;
 			case DK.FTREADER_LOG:
-			//	Log.d(LCAT, "[FTReaderLog]:" + msg.obj);
 				break;
 			case DK.CCIDSCHEME_LOG:
-				event.put("type", "CCIDSchemeLog");
-			//	Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
+				Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
 				break;
 			case DK.BT3_NEW:
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				Log.d(LCAT, "Device found: " + dev.getName());
-				devicefound = true;
+				
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
+				
+				
 				event.put("device", new DeviceProxy(dev));
+				try {
+					devicefound = true;
+					ftReader.readerOpen(dev);
+					event.put("status", ftReader.readerGetSlotStatus(0));
+				} catch (FTException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				arrayForBlueToothDevice.add(dev);
 				break;
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
 				break;
 			default:
-				Log.d(LCAT, "default Result " + msg.what);
 				KrollDict res = new KrollDict();
 				if ((msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK) {
 					res.put("status", true);
@@ -287,9 +292,7 @@ public class FeitianModule extends KrollModule {
 				}
 				break;
 			}
-			if (devicefound && hasListeners("onFound")) {
-				fireEvent("onFound", event);
-			}
+			
 			if (devicefound && hasProperty("onFound")) {
 				if (getProperty("onFound") instanceof KrollFunction) {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
