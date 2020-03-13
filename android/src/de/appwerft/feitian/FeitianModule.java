@@ -291,7 +291,7 @@ public class FeitianModule extends KrollModule {
 					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
 					try {
 						String[] devices = ftReader.readerOpen(arrayForBlueToothDevice.get(0));
-						Log.d(LCAT,"devices=" +devices);
+						event.put("devices" ,devices);
 						event.put("status", ftReader.readerGetSlotStatus(0));
 						onFound.callAsync(getKrollObject(), event);
 					} catch (FTException e) {
@@ -304,17 +304,6 @@ public class FeitianModule extends KrollModule {
 			}
 		}
 	};
-
-	private void readCallbacks() {
-		Iterator it = getProperties().entrySet().iterator();
-		while (it.hasNext()) {
-			Map.Entry pair = (Map.Entry) it.next();
-			if (pair.getValue() instanceof KrollFunction) {
-				callbacks.put((String) pair.getKey(), pair.getValue());
-			}
-			it.remove(); // avoids a ConcurrentModificationException
-		}
-	}
 
 	private class AsyncAdapter extends AsyncTask<String, Void, byte[]> {
 
