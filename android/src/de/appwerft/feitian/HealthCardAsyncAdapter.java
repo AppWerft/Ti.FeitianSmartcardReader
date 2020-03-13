@@ -38,68 +38,79 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 
 	private String getPatientData() throws IOException {
 		// Create read command for the first two bytes of patient file.
-        // Read first two byte of patient data. These contain the length of the PD file.
-		//byte[] data = transmit(APDU.readData(0,2));
-		
-		// Since the two bytes are included themselves those two bytes are subtracted from the length.
-		//int pdLength = 8*data[0]+data[1]-2;
-		Log.d(LCAT,"READ_PD try to send");
-		byte[] pd = transmit(APDU.getCmd(APDU.READ_PD));
-		Log.d(LCAT,"READ_PD sent");
-		Log.d(LCAT,"Length of raw pd ="+ pd.length);
-		Log.d(LCAT,"first 2 bytes =" + pd[0] + pd[1]);
+		// Read first two byte of patient data. These contain the length of the PD file.
+		// byte[] data = transmit(APDU.readData(0,2));
 
-		int pdLength = ((pd[0] & 0xff) << 8) | (pd[1] & 0xff);
-		Log.d(LCAT,"Length of pd ="+ pdLength);
+		// Since the two bytes are included themselves those two bytes are subtracted
+		// from the length.
+		// int pdLength = 8*data[0]+data[1]-2;
+		Log.d(LCAT, "READ_PD try to send");
+		byte[] pd;
+		try {
+			pd = transmit(APDU.getCmd(APDU.READ_PD));
+			Log.d(LCAT, "READ_PD sent");
+			
+			Log.d(LCAT, "Length of raw pd =" + pd.length);
+			Log.d(LCAT, "first 2 bytes =" + pd[0] + pd[1]);
+
+			int pdLength = ((pd[0] & 0xff) << 8) | (pd[1] & 0xff);
+			Log.d(LCAT, "Length of pd =" + pdLength);
 			byte[] pdDataCompressed = new byte[pdLength];
 			System.arraycopy(pd, 2, pdDataCompressed, 0, pdLength);
 			return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
 		
-	}
-	
-	private byte[] transmit(byte[] apdu) {
-		try {
-			byte[] res = ftReader.readerXfr(0,apdu);
-			Log.d(LCAT,Utility.bytes2HexStr(res));
-			return res;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		
+		return null; 
 	}
-	
+
+	private byte[] transmit(byte[] apdu) throws FTException {
+		
+			byte[] res = ftReader.readerXfr(0, apdu);
+			Log.d(LCAT, Utility.bytes2HexStr(res));
+			return res;
+		
+		
+	}
+
 	@Override
 	protected byte[] doInBackground(Void... arg0) {
 		byte[] recv = null;
-		String generation ="";
-		Log.d(LCAT,"doInBackground started");
+		String generation = "";
+		Log.d(LCAT, "doInBackground started");
 		// Select Masterfile (root)
-		transmit(APDU.getCmd(APDU.SELECT_MF));
-		
+		try {
+			transmit(APDU.getCmd(APDU.SELECT_MF));
+			transmit(APDU.getCmd(APDU.SELECT_HCA));
+		} catch (FTException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		// detecting generation:
-		/*String ef_v_1 = Utility.bytes2HexStr(transmit(EF_VERSION_1));
-		String ef_v_2 = Utility.bytes2HexStr(transmit(EF_VERSION_2));
-		String ef_v_3 = Utility.bytes2HexStr(transmit(EF_VERSION_3));
-		if (ef_v_1.equals("3.0.0") && ef_v_2.equals("3.0.0") && ef_v_3.equals("3.0.2"))
-		    generation = "G1";
-		else if (ef_v_1.equals("3.0.0") && ef_v_2.equals("3.0.1") && ef_v_3.equals("3.0.3"))
-		    generation = "G1 plus";
-		else if(ef_v_1.startsWith("4.0"))
-		    generation = "G2";
-		*/
+		/*
+		 * String ef_v_1 = Utility.bytes2HexStr(transmit(EF_VERSION_1)); String ef_v_2 =
+		 * Utility.bytes2HexStr(transmit(EF_VERSION_2)); String ef_v_3 =
+		 * Utility.bytes2HexStr(transmit(EF_VERSION_3)); if (ef_v_1.equals("3.0.0") &&
+		 * ef_v_2.equals("3.0.0") && ef_v_3.equals("3.0.2")) generation = "G1"; else if
+		 * (ef_v_1.equals("3.0.0") && ef_v_2.equals("3.0.1") && ef_v_3.equals("3.0.3"))
+		 * generation = "G1 plus"; else if(ef_v_1.startsWith("4.0")) generation = "G2";
+		 */
 		// Select Health Care Application
-		transmit(APDU.getCmd(APDU.SELECT_HCA));
 		
+
 		// Select file containing patient data
-		//transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
-		//Log.d(LCAT,"SELECT_FILE_PD started");
+		// transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
+		// Log.d(LCAT,"SELECT_FILE_PD started");
 		try {
 			String patientContent = getPatientData();
 			KrollDict res = new KrollDict();
-			res.put("xml",patientContent);
+			res.put("xml", patientContent);
 			onRcv.callAsync(krollobject, res);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,8 +125,8 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 			this.onRcv.call(krollobject, res);
 		}
 	}
-	
+
 	private static byte[] unzip(byte[] zip) throws IOException {
-		 return IOUtils.toByteArray(new GZIPInputStream(new ByteArrayInputStream(zip)));
+		return IOUtils.toByteArray(new GZIPInputStream(new ByteArrayInputStream(zip)));
 	}
 }
