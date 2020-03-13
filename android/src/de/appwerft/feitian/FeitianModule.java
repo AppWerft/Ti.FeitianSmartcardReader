@@ -211,14 +211,13 @@ public class FeitianModule extends KrollModule {
 		}
 	}
 	@Kroll.method
-	public boolean powerOn() {
+	public String powerOn() {
 		try {
-			ftReader.readerPowerOn(0);
-			return true;
+			return Utility.bytes2HexStr(ftReader.readerPowerOn(0));
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 
 	}
