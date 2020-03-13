@@ -34,6 +34,7 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		this.ftReader = ftReader;
 		this.onRcv = onRcv;
 		this.krollobject = krollobject;
+		Log.d(LCAT,"ftReader imported");
 	}
 
 	private String getPatientData() throws IOException {
@@ -68,6 +69,7 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 	}
 
 	private byte[] transmit(byte[] apdu) throws FTException {
+			Log.d(LCAT,"frReader slotStatus: "+ ftReader.readerGetSlotStatus(0));
 			byte[] res = ftReader.readerXfr(0, apdu);
 			Log.d(LCAT, Utility.bytes2HexStr(res));
 			return res;
