@@ -54,15 +54,13 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 			Log.d(LCAT, "READ_PD sent");
 			Log.d(LCAT, "Length of raw pd =" + pd.length);
 			Log.d(LCAT, "first 2 bytes =" + pd[0] + pd[1]);
-
 			int pdLength = ((pd[0] & 0xff) << 8) | (pd[1] & 0xff);
 			Log.d(LCAT, "Length of pd =" + pdLength);
 			byte[] pdDataCompressed = new byte[pdLength];
 			System.arraycopy(pd, 2, pdDataCompressed, 0, pdLength);
 			return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
-		
 		} catch (FTException e) {
-			Log.e(LCAT,e.getLocalizedMessage());
+			Log.e(LCAT,e.getLocalizedMessage());	
 			e.printStackTrace();
 		}
 		
@@ -70,9 +68,9 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 	}
 
 	private byte[] transmit(byte[] apdu) throws FTException {
-			Log.d(LCAT,"frReader slotStatus: "+ ftReader.readerGetSlotStatus(0));
+			Log.d(LCAT, "SEND: " +Utility.bytes2HexStr(apdu));
 			byte[] res = ftReader.readerXfr(0, apdu);
-			Log.d(LCAT, Utility.bytes2HexStr(res));
+			Log.d(LCAT, "RCV: " + Utility.bytes2HexStr(res));
 			return res;
 	}
 
