@@ -69,7 +69,9 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 	}
 	private byte[] transmit(byte[] apdu) {
 		try {
-			return ftReader.readerXfr(0, apdu);
+			byte[] res = ftReader.readerXfr(0,apdu);
+			Log.d(LCAT,Utility.bytes2HexStr(res));
+			return res;
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
