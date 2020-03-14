@@ -121,7 +121,7 @@ public class FeitianModule extends KrollModule {
 
 	@Kroll.method
 	public FeitianModule readerFind(int type,KrollFunction onChanged) {
-		this.onChanged = onChanged,
+		this.onChanged = onChanged;
 		try {
 			arrayForBlueToothDevice.clear();
 			Log.d(LCAT,"type="+type);
