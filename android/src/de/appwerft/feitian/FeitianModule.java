@@ -104,15 +104,13 @@ public class FeitianModule extends KrollModule {
 	@Kroll.constant
 	public static final int READER_UNKNOW = DK.READER_UNKNOW;
 
-	
-
-	
 	KrollFunction onRecv;
+	KrollFunction onChanged;
 
 	public FeitianModule() {
 		super();
 		Log.d(LCAT, "Construct FeitianModule");
-		Log.d(LCAT,"🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩");
+		Log.d(LCAT, "🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩");
 
 	}
 
@@ -122,7 +120,8 @@ public class FeitianModule extends KrollModule {
 	}
 
 	@Kroll.method
-	public FeitianModule readerFind(int type) {
+	public FeitianModule readerFind(int type,KrollFunction onChanged) {
+		this.onChanged = onChanged,
 		try {
 			arrayForBlueToothDevice.clear();
 			Log.d(LCAT,"type="+type);
@@ -142,6 +141,7 @@ public class FeitianModule extends KrollModule {
 	public String[] readerOpen(Object o) {
 		return openDevice(o);
 	}
+
 	@Kroll.method
 	public boolean readerClose() {
 		try {
@@ -195,20 +195,20 @@ public class FeitianModule extends KrollModule {
 	public void getHealthCard(Object o) {
 		if (o instanceof KrollFunction)
 			onRecv = (KrollFunction) o;
-		AsyncTask<Void, Void, byte[]> doRequest = new HealthCardAsyncAdapter(getKrollObject(),onRecv, ftReader);
+		AsyncTask<Void, Void, byte[]> doRequest = new HealthCardAsyncAdapter(getKrollObject(), onRecv, ftReader);
 		doRequest.execute();
 	}
 
-	
 	@Kroll.method
 	public void readerAutoTurnOff(boolean state) {
 		try {
 			ftReader.FT_AutoTurnOffReader(state);
 		} catch (FTException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
+
 	@Kroll.method
 	public String powerOn() {
 		try {
@@ -220,6 +220,7 @@ public class FeitianModule extends KrollModule {
 		}
 
 	}
+
 	@Kroll.method
 	public boolean powerOff() {
 		try {
@@ -253,57 +254,56 @@ public class FeitianModule extends KrollModule {
 			case DK.FTREADER_LOG:
 				break;
 			case DK.CCIDSCHEME_LOG:
-				//Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
+				// Log.d(LCAT, "[CCIDSchemeLog]:" + msg.obj);
 				break;
 			case DK.BT3_NEW:
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
-				
-					devicefound = true;
-					Log.d(LCAT,"device found try open " + dev.getName());
-					
-					arrayForBlueToothDevice.add(dev);
-					
-				
+
+				devicefound = true;
+				Log.d(LCAT, "device found try open " + dev.getName());
+
+				arrayForBlueToothDevice.add(dev);
+
 				break;
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
 				break;
 			default:
 				KrollDict res = new KrollDict();
-				if ((msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK) {
-					res.put("status", true);
-					if (hasListeners("cardChanged"))
-						fireEvent("cardChanged", res);
-					return;
-				} else if ((msg.what & DK.CARD_OUT_MASK) == DK.CARD_OUT_MASK) {
-					res.put("status", false);
-					if (hasListeners("cardChanged"))
-						fireEvent("cardChanged", res);
-					return;
-				}
-				break;
-			}
-			
-			if (devicefound && hasProperty("onFound")) {
-				if (getProperty("onFound") instanceof KrollFunction) {
-					KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
+				if (  (msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK ||(msg.what & DK.CARD_OUT_MASK) == DK.CARD_OUT_MASK ) {
 					try {
-						String[] devices = ftReader.readerOpen(arrayForBlueToothDevice.get(0));
-						
-						event.put("devices" ,devices);
-						byte[] atr = ftReader.readerPowerOn(0);
-						event.put("atr", Utility.bytes2HexStr(atr));
-						event.put("status", ftReader.readerGetSlotStatus(0));
-						onFound.callAsync(getKrollObject(), event);
+						res.put("status", ftReader.readerGetSlotStatus(0));
+						onChanged.callAsync(getKrollObject(), event);
+						return;
 					} catch (FTException e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-				} else
-					Log.w(LCAT, "onFound != KrollFunction");
+
+					return;
+				} 
+				break;
 			}
+
+			if (devicefound && onChanged != null) {
+
+				KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
+				try {
+					String[] devices = ftReader.readerOpen(arrayForBlueToothDevice.get(0));
+					event.put("devices", devices);
+					byte[] atr = ftReader.readerPowerOn(0);
+					event.put("atr", Utility.bytes2HexStr(atr));
+					event.put("status", ftReader.readerGetSlotStatus(0));
+					onChanged.callAsync(getKrollObject(), event);
+				} catch (FTException e) {
+					e.printStackTrace();
+				}
+
+			} else
+				Log.w(LCAT, "onFound != KrollFunction");
+
 		}
 	};
 
