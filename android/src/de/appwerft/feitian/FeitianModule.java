@@ -196,10 +196,10 @@ public class FeitianModule extends KrollModule {
 	}
 
 	@Kroll.method
-	public void getHealthCard(Object o) {
+	public void getHealthCard(boolean mobile, Object o) {
 		if (o instanceof KrollFunction)
 			onRecv = (KrollFunction) o;
-		AsyncTask<Void, Void, byte[]> doRequest = new HealthCardAsyncAdapter(getKrollObject(), onRecv, ftReader);
+		AsyncTask<Void, Void, byte[]> doRequest = new HealthCardAsyncAdapter(getKrollObject(), onRecv, ftReader,mobile);
 		doRequest.execute();
 	}
 

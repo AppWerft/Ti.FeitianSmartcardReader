@@ -18,7 +18,7 @@ public class APDU {
 	public static final String SELECT_FILE_PD = "00 B0 81 00 02";  // read binary
 	public static final String SELECT_FILE_VD = "00 B0 82 00 08";  // read binary
 	
-	public static final String READ_PD_MOBIL = 	"00 B0 81 00 00 00 00"; // read binary
+	public static final String READ_PD_MOBILE = "00 B0 81 00 00 00 00"; // read binary
 	public static final String READ_PD_STAT  =  "00 B0 00 02 00";
 	
 		

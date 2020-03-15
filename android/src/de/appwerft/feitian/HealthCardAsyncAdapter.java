@@ -29,39 +29,39 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 	public FTReader ftReader;
 	KrollFunction onRcv;
 	KrollObject krollobject;
+	boolean mobile;
 	private static final String LCAT = FeitianModule.LCAT;
 
-	public HealthCardAsyncAdapter(KrollObject krollobject, KrollFunction onRcv, FTReader ftReader) {
+	public HealthCardAsyncAdapter(KrollObject krollobject, KrollFunction onRcv, FTReader ftReader, boolean mobile) {
 		this.ftReader = ftReader;
 		this.onRcv = onRcv;
 		this.krollobject = krollobject;
-		Log.d(LCAT,"ftReader imported");
+		this.mobile = mobile;
+		Log.d(LCAT, "ftReader imported");
 	}
 
 	private String getPatientData() throws IOException {
 		byte[] pdmeta;
 		try {
-			//transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
-			pdmeta = transmit(APDU.getCmd(APDU.SELECT_FILE_PD),"SELECT_FILE_PD");
-			
-			Log.d(LCAT,Utility.bytes2HexStr(pdmeta));
-			/*
-			 * [com.ftsafe.readerScheme.FTReader:readerXfr]
-			 * [apdu send recv error][java.lang.Exception: apdu send recv error]
-			 */
+		
+			pdmeta = transmit(APDU.getCmd(APDU.SELECT_FILE_PD), "SELECT_FILE_PD");
+
+			Log.d(LCAT, Utility.bytes2HexStr(pdmeta));
+		
 			int pdLength = ((pdmeta[0] & 0xff) << 8) | (pdmeta[1] & 0xff);
 			Log.d(LCAT, "Length of pd =" + pdLength);
 			
-			byte[] pd = transmit(APDU.getCmd(APDU.READ_PD_STAT + Utility.bytes2HexStr(pdmeta,2)),"READ_PD_STAT + LEN");
-			
+			byte[] pd = (mobile) ? transmit(APDU.getCmd(APDU.READ_PD_MOBILE), "READ_PD_MOBILE")
+					: transmit(APDU.getCmd(APDU.READ_PD_STAT + Utility.bytes2HexStr(pdmeta, 2)), "READ_PD_STAT + LEN");
+
 			byte[] pdDataCompressed = new byte[pdLength];
-			//java.lang.ArrayIndexOutOfBoundsException: 
+			// java.lang.ArrayIndexOutOfBoundsException:
 			// src.length=4 srcPos=2 dst.length=364 dstPos=0 length=364
-			//System.arraycopy(pd, 2, pdDataCompressed, 0, pdLength);
-			//Log.d(LCAT,Utility.bytes2HexStr(pdDataCompressed));
-			//return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
+			// System.arraycopy(pd, 2, pdDataCompressed, 0, pdLength);
+			// Log.d(LCAT,Utility.bytes2HexStr(pdDataCompressed));
+			// return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
 		} catch (FTException e) {
-			Log.e(LCAT,e.getLocalizedMessage());	
+			Log.e(LCAT, e.getLocalizedMessage());
 			e.printStackTrace();
 			try {
 				ftReader.readerClose();
@@ -69,15 +69,15 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 				e1.printStackTrace();
 			}
 		}
-		
-		return null; 
+
+		return null;
 	}
 
 	private byte[] transmit(byte[] apdu, String comment) throws FTException {
-			Log.d(LCAT, "SEND: " + Utility.bytes2HexStr(apdu) + "  ("+comment+")");
-			byte[] res = ftReader.readerXfr(0, apdu);
-			Log.d(LCAT, "RCV: " + Utility.bytes2HexStr(res));
-			return res;
+		Log.d(LCAT, "SEND: " + Utility.bytes2HexStr(apdu) + "  (" + comment + ")");
+		byte[] res = ftReader.readerXfr(0, apdu);
+		Log.d(LCAT, "RCV: " + Utility.bytes2HexStr(res));
+		return res;
 	}
 
 	@Override
@@ -87,11 +87,11 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		Log.d(LCAT, "doInBackground started");
 		// Select Masterfile (root)
 		try {
-			
-			transmit(APDU.getCmd(APDU.SELECT_MF),"SELECT_MF");
-			transmit(APDU.getCmd(APDU.SELECT_HCA),"SELECT_HCA");
+
+			transmit(APDU.getCmd(APDU.SELECT_MF), "SELECT_MF");
+			transmit(APDU.getCmd(APDU.SELECT_HCA), "SELECT_HCA");
 		} catch (FTException e1) {
-			Log.d(LCAT,e1.getLocalizedMessage());
+			Log.d(LCAT, e1.getLocalizedMessage());
 			e1.printStackTrace();
 		}
 
@@ -105,14 +105,13 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		 * generation = "G1 plus"; else if(ef_v_1.startsWith("4.0")) generation = "G2";
 		 */
 		// Select Health Care Application
-		
 
 		// Select file containing patient data
 		// transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
 		// Log.d(LCAT,"SELECT_FILE_PD started");
 		try {
 			String patientContent = getPatientData();
-			
+
 			KrollDict res = new KrollDict();
 			res.put("xml", patientContent);
 			onRcv.callAsync(krollobject, res);
