@@ -1,11 +1,15 @@
 package de.appwerft.feitian;
 
+import org.appcelerator.kroll.common.Log;
+
 class Tool {
 	public static byte[] hexStringToBytes(String hexString) {
 		if (hexString == null || hexString.equals("")) {
 			return null;
 		}
-		hexString = hexString.toUpperCase();
+		Log.d("TiF",hexString);
+		hexString = hexString.replaceAll("\\s+","").toUpperCase();
+		Log.d("TiF",hexString);
 		int length = hexString.length() / 2;
 		char[] hexChars = hexString.toCharArray();
 		byte[] d = new byte[length];

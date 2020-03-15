@@ -36,6 +36,8 @@ public class DeviceProxy extends KrollProxy {
 		return this.device;
 	}
 	
+	
+	
 	@Kroll.method
 	@Kroll.getProperty
 	public String getName() {
@@ -47,6 +49,7 @@ public class DeviceProxy extends KrollProxy {
 	public String getAddress() {
 		return device.getAddress();
 	}
+	
 	
 	@Kroll.method
 	@Kroll.getProperty

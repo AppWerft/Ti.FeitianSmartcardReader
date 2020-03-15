@@ -39,19 +39,27 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 	}
 
 	private String getPatientData() throws IOException {
-		byte[] pd;
+		byte[] pdmeta;
 		try {
-			transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
-			pd = transmit(APDU.getCmd(APDU.READ_PD));
+			//transmit(APDU.getCmd(APDU.SELECT_FILE_PD));
+			pdmeta = transmit(APDU.getCmd(APDU.SELECT_FILE_PD),"SELECT_FILE_PD");
+			
+			Log.d(LCAT,Utility.bytes2HexStr(pdmeta));
 			/*
 			 * [com.ftsafe.readerScheme.FTReader:readerXfr]
 			 * [apdu send recv error][java.lang.Exception: apdu send recv error]
 			 */
-			int pdLength = ((pd[0] & 0xff) << 8) | (pd[1] & 0xff);
+			int pdLength = ((pdmeta[0] & 0xff) << 8) | (pdmeta[1] & 0xff);
 			Log.d(LCAT, "Length of pd =" + pdLength);
+			
+			byte[] pd = transmit(APDU.getCmd(APDU.READ_PD_STAT + Utility.bytes2HexStr(pdmeta,2)),"READ_PD_STAT + LEN");
+			
 			byte[] pdDataCompressed = new byte[pdLength];
-			System.arraycopy(pd, 2, pdDataCompressed, 0, pdLength);
-			return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
+			//java.lang.ArrayIndexOutOfBoundsException: 
+			// src.length=4 srcPos=2 dst.length=364 dstPos=0 length=364
+			//System.arraycopy(pd, 2, pdDataCompressed, 0, pdLength);
+			//Log.d(LCAT,Utility.bytes2HexStr(pdDataCompressed));
+			//return new String(unzip(pdDataCompressed), Charset.forName("ISO-8859-15"));
 		} catch (FTException e) {
 			Log.e(LCAT,e.getLocalizedMessage());	
 			e.printStackTrace();
@@ -65,8 +73,8 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		return null; 
 	}
 
-	private byte[] transmit(byte[] apdu) throws FTException {
-			Log.d(LCAT, "SEND: " + Utility.bytes2HexStr(apdu));
+	private byte[] transmit(byte[] apdu, String comment) throws FTException {
+			Log.d(LCAT, "SEND: " + Utility.bytes2HexStr(apdu) + "  ("+comment+")");
 			byte[] res = ftReader.readerXfr(0, apdu);
 			Log.d(LCAT, "RCV: " + Utility.bytes2HexStr(res));
 			return res;
@@ -79,8 +87,9 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		Log.d(LCAT, "doInBackground started");
 		// Select Masterfile (root)
 		try {
-			transmit(APDU.getCmd(APDU.SELECT_MF));
-			transmit(APDU.getCmd(APDU.SELECT_HCA));
+			
+			transmit(APDU.getCmd(APDU.SELECT_MF),"SELECT_MF");
+			transmit(APDU.getCmd(APDU.SELECT_HCA),"SELECT_HCA");
 		} catch (FTException e1) {
 			Log.d(LCAT,e1.getLocalizedMessage());
 			e1.printStackTrace();
@@ -103,6 +112,7 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 		// Log.d(LCAT,"SELECT_FILE_PD started");
 		try {
 			String patientContent = getPatientData();
+			
 			KrollDict res = new KrollDict();
 			res.put("xml", patientContent);
 			onRcv.callAsync(krollobject, res);

@@ -1,0 +1,350 @@
+// 
+// Decompiled by Procyon v0.5.36
+// 
+
+package gnu.kawa.models;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.awt.Color;
+
+public class StandardColor extends Color
+{
+    String name;
+    static Map<String, StandardColor> map;
+    public static final StandardColor aliceBlue;
+    public static final StandardColor antiqueWhite;
+    public static final StandardColor aqua;
+    public static final StandardColor aquamarine;
+    public static final StandardColor azure;
+    public static final StandardColor beige;
+    public static final StandardColor bisque;
+    public static final StandardColor black;
+    public static final StandardColor blanchedAlmond;
+    public static final StandardColor blue;
+    public static final StandardColor blueViolet;
+    public static final StandardColor brown;
+    public static final StandardColor burlyWood;
+    public static final StandardColor cadetBlue;
+    public static final StandardColor chartreuse;
+    public static final StandardColor chocolate;
+    public static final StandardColor coral;
+    public static final StandardColor cornflowerBlue;
+    public static final StandardColor cornsilk;
+    public static final StandardColor crimson;
+    public static final StandardColor cyan;
+    public static final StandardColor darkBlue;
+    public static final StandardColor darkCyan;
+    public static final StandardColor darkGoldenrod;
+    public static final StandardColor darkGray;
+    public static final StandardColor darkGreen;
+    public static final StandardColor darkGrey;
+    public static final StandardColor darkKhaki;
+    public static final StandardColor darkMagenta;
+    public static final StandardColor darkOliveGreen;
+    public static final StandardColor darkorange;
+    public static final StandardColor darkOrchid;
+    public static final StandardColor darkRed;
+    public static final StandardColor darkSalmon;
+    public static final StandardColor darkSeaGreen;
+    public static final StandardColor darkSlateBlue;
+    public static final StandardColor darkSlateGray;
+    public static final StandardColor darkSlateGrey;
+    public static final StandardColor darkTurquoise;
+    public static final StandardColor darkViolet;
+    public static final StandardColor deepPink;
+    public static final StandardColor deepSkyBlue;
+    public static final StandardColor dimGray;
+    public static final StandardColor dimGrey;
+    public static final StandardColor dodgerBlue;
+    public static final StandardColor fireBrick;
+    public static final StandardColor floralWhite;
+    public static final StandardColor forestGreen;
+    public static final StandardColor fuchsia;
+    public static final StandardColor gainsboro;
+    public static final StandardColor ghostWhite;
+    public static final StandardColor gold;
+    public static final StandardColor goldenrod;
+    public static final StandardColor gray;
+    public static final StandardColor green;
+    public static final StandardColor greenYellow;
+    public static final StandardColor grey;
+    public static final StandardColor honeyDew;
+    public static final StandardColor hotPink;
+    public static final StandardColor indianRed;
+    public static final StandardColor indigo;
+    public static final StandardColor ivory;
+    public static final StandardColor khaki;
+    public static final StandardColor lavender;
+    public static final StandardColor lavenderBlush;
+    public static final StandardColor lawnGreen;
+    public static final StandardColor lemonChiffon;
+    public static final StandardColor lightBlue;
+    public static final StandardColor lightCoral;
+    public static final StandardColor lightCyan;
+    public static final StandardColor lightGoldenrodYellow;
+    public static final StandardColor lightGray;
+    public static final StandardColor lightGreen;
+    public static final StandardColor lightGrey;
+    public static final StandardColor lightPink;
+    public static final StandardColor lightSalmon;
+    public static final StandardColor lightSeaGreen;
+    public static final StandardColor lightSkyBlue;
+    public static final StandardColor lightSlateGray;
+    public static final StandardColor lightSlateGrey;
+    public static final StandardColor lightSteelBlue;
+    public static final StandardColor lightYellow;
+    public static final StandardColor lime;
+    public static final StandardColor limeGreen;
+    public static final StandardColor linen;
+    public static final StandardColor magenta;
+    public static final StandardColor maroon;
+    public static final StandardColor mediumAquaMarine;
+    public static final StandardColor mediumBlue;
+    public static final StandardColor mediumOrchid;
+    public static final StandardColor mediumPurple;
+    public static final StandardColor mediumSeaGreen;
+    public static final StandardColor mediumSlateBlue;
+    public static final StandardColor mediumSpringGreen;
+    public static final StandardColor mediumTurquoise;
+    public static final StandardColor mediumVioletRed;
+    public static final StandardColor midnightBlue;
+    public static final StandardColor mintCream;
+    public static final StandardColor mistyRose;
+    public static final StandardColor moccasin;
+    public static final StandardColor navajoWhite;
+    public static final StandardColor navy;
+    public static final StandardColor oldLace;
+    public static final StandardColor olive;
+    public static final StandardColor oliveDrab;
+    public static final StandardColor orange;
+    public static final StandardColor orangeRed;
+    public static final StandardColor orchid;
+    public static final StandardColor paleGoldenrod;
+    public static final StandardColor paleGreen;
+    public static final StandardColor paleTurquoise;
+    public static final StandardColor paleVioletRed;
+    public static final StandardColor papayaWhip;
+    public static final StandardColor peachPuff;
+    public static final StandardColor peru;
+    public static final StandardColor pink;
+    public static final StandardColor plum;
+    public static final StandardColor powderBlue;
+    public static final StandardColor purple;
+    public static final StandardColor red;
+    public static final StandardColor rosyBrown;
+    public static final StandardColor royalBlue;
+    public static final StandardColor saddleBrown;
+    public static final StandardColor salmon;
+    public static final StandardColor sandyBrown;
+    public static final StandardColor seaGreen;
+    public static final StandardColor seaShell;
+    public static final StandardColor sienna;
+    public static final StandardColor silver;
+    public static final StandardColor skyBlue;
+    public static final StandardColor slateBlue;
+    public static final StandardColor slateGray;
+    public static final StandardColor slateGrey;
+    public static final StandardColor snow;
+    public static final StandardColor springGreen;
+    public static final StandardColor steelBlue;
+    public static final StandardColor tan;
+    public static final StandardColor teal;
+    public static final StandardColor thistle;
+    public static final StandardColor tomato;
+    public static final StandardColor turquoise;
+    public static final StandardColor violet;
+    public static final StandardColor wheat;
+    public static final StandardColor white;
+    public static final StandardColor whiteSmoke;
+    public static final StandardColor yellow;
+    public static final StandardColor yellowGreen;
+    public static final StandardColor transparent;
+    
+    private StandardColor(final String name, final int rgb) {
+        super(rgb);
+        this.name = name;
+    }
+    
+    private StandardColor(final String name, final int r, final int g, final int b, final int alpha) {
+        super(r, g, b, alpha);
+        this.name = name;
+    }
+    
+    private static StandardColor add(final String name, final int rgb) {
+        final StandardColor color = new StandardColor(name, rgb);
+        StandardColor.map.put(name.replace("-", ""), color);
+        return color;
+    }
+    
+    private static StandardColor add(final StandardColor color) {
+        StandardColor.map.put(color.name.replace("-", ""), color);
+        return color;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public static StandardColor valueOf(final String name) {
+        final String cname = name.toLowerCase().replace("-", "");
+        return StandardColor.map.get(cname);
+    }
+    
+    @Override
+    public String toString() {
+        return "StandardColor[r=" + this.getRed() + ",g=" + this.getGreen() + ",b=" + this.getBlue() + ";" + this.name + "]";
+    }
+    
+    static {
+        StandardColor.map = new HashMap<String, StandardColor>();
+        aliceBlue = add("alice-blue", 15792383);
+        antiqueWhite = add("antique-white", 16444375);
+        aqua = add("aqua", 65535);
+        aquamarine = add("aquamarine", 8388564);
+        azure = add("azure", 15794175);
+        beige = add("beige", 16119260);
+        bisque = add("bisque", 16770244);
+        black = add("black", 0);
+        blanchedAlmond = add("blanched-almond", 16772045);
+        blue = add("blue", 255);
+        blueViolet = add("blue-violet", 9055202);
+        brown = add("brown", 10824234);
+        burlyWood = add("burly-wood", 14596231);
+        cadetBlue = add("cadet-blue", 6266528);
+        chartreuse = add("chartreuse", 8388352);
+        chocolate = add("chocolate", 13789470);
+        coral = add("coral", 16744272);
+        cornflowerBlue = add("cornflower-blue", 6591981);
+        cornsilk = add("cornsilk", 16775388);
+        crimson = add("crimson", 14423100);
+        cyan = add("cyan", 65535);
+        darkBlue = add("dark-blue", 139);
+        darkCyan = add("dark-cyan", 35723);
+        darkGoldenrod = add("dark-goldenrod", 12092939);
+        darkGray = add("dark-gray", 11119017);
+        darkGreen = add("dark-green", 25600);
+        darkGrey = add("dark-grey", 11119017);
+        darkKhaki = add("dark-khaki", 12433259);
+        darkMagenta = add("dark-magenta", 9109643);
+        darkOliveGreen = add("dark-olive-green", 5597999);
+        darkorange = add("darkorange", 16747520);
+        darkOrchid = add("dark-orchid", 10040012);
+        darkRed = add("dark-red", 9109504);
+        darkSalmon = add("dark-salmon", 15308410);
+        darkSeaGreen = add("dark-sea-green", 9419919);
+        darkSlateBlue = add("dark-slate-blue", 4734347);
+        darkSlateGray = add("dark-slate-gray", 3100495);
+        darkSlateGrey = add("dark-slate-grey", 3100495);
+        darkTurquoise = add("dark-turquoise", 52945);
+        darkViolet = add("dark-violet", 9699539);
+        deepPink = add("deep-pink", 16716947);
+        deepSkyBlue = add("deep-sky-blue", 49151);
+        dimGray = add("dim-gray", 6908265);
+        dimGrey = add("dim-grey", 6908265);
+        dodgerBlue = add("dodger-blue", 2003199);
+        fireBrick = add("fire-brick", 11674146);
+        floralWhite = add("floral-white", 16775920);
+        forestGreen = add("forest-green", 2263842);
+        fuchsia = add("fuchsia", 16711935);
+        gainsboro = add("gainsboro", 14474460);
+        ghostWhite = add("ghost-white", 16316671);
+        gold = add("gold", 16766720);
+        goldenrod = add("goldenrod", 14329120);
+        gray = add("gray", 8421504);
+        green = add("green", 32768);
+        greenYellow = add("green-yellow", 11403055);
+        grey = add("grey", 8421504);
+        honeyDew = add("honey-dew", 15794160);
+        hotPink = add("hot-pink", 16738740);
+        indianRed = add("indian-red", 13458524);
+        indigo = add("indigo", 4915330);
+        ivory = add("ivory", 16777200);
+        khaki = add("khaki", 15787660);
+        lavender = add("lavender", 15132410);
+        lavenderBlush = add("lavender-blush", 16773365);
+        lawnGreen = add("lawn-green", 8190976);
+        lemonChiffon = add("lemon-chiffon", 16775885);
+        lightBlue = add("light-blue", 11393254);
+        lightCoral = add("light-coral", 15761536);
+        lightCyan = add("light-cyan", 14745599);
+        lightGoldenrodYellow = add("light-goldenrod-yellow", 16448210);
+        lightGray = add("light-gray", 13882323);
+        lightGreen = add("light-green", 9498256);
+        lightGrey = add("light-grey", 13882323);
+        lightPink = add("light-pink", 16758465);
+        lightSalmon = add("light-salmon", 16752762);
+        lightSeaGreen = add("light-sea-green", 2142890);
+        lightSkyBlue = add("light-sky-blue", 8900346);
+        lightSlateGray = add("light-slate-gray", 7833753);
+        lightSlateGrey = add("light-slate-grey", 7833753);
+        lightSteelBlue = add("light-steel-blue", 11584734);
+        lightYellow = add("light-yellow", 16777184);
+        lime = add("lime", 65280);
+        limeGreen = add("lime-green", 3329330);
+        linen = add("linen", 16445670);
+        magenta = add("magenta", 16711935);
+        maroon = add("maroon", 8388608);
+        mediumAquaMarine = add("medium-aqua-marine", 6737322);
+        mediumBlue = add("medium-blue", 205);
+        mediumOrchid = add("medium-orchid", 12211667);
+        mediumPurple = add("medium-purple", 9662683);
+        mediumSeaGreen = add("medium-sea-green", 3978097);
+        mediumSlateBlue = add("medium-slate-blue", 8087790);
+        mediumSpringGreen = add("medium-spring-green", 64154);
+        mediumTurquoise = add("medium-turquoise", 4772300);
+        mediumVioletRed = add("medium-violet-red", 13047173);
+        midnightBlue = add("midnight-blue", 1644912);
+        mintCream = add("mint-cream", 16121850);
+        mistyRose = add("misty-rose", 16770273);
+        moccasin = add("moccasin", 16770229);
+        navajoWhite = add("navajo-white", 16768685);
+        navy = add("navy", 128);
+        oldLace = add("old-lace", 16643558);
+        olive = add("olive", 8421376);
+        oliveDrab = add("olive-drab", 7048739);
+        orange = add("orange", 16753920);
+        orangeRed = add("orange-red", 16729344);
+        orchid = add("orchid", 14315734);
+        paleGoldenrod = add("pale-goldenrod", 15657130);
+        paleGreen = add("pale-green", 10025880);
+        paleTurquoise = add("pale-turquoise", 11529966);
+        paleVioletRed = add("pale-violet-red", 14381203);
+        papayaWhip = add("papaya-whip", 16773077);
+        peachPuff = add("peach-puff", 16767673);
+        peru = add("peru", 13468991);
+        pink = add("pink", 16761035);
+        plum = add("plum", 14524637);
+        powderBlue = add("powder-blue", 11591910);
+        purple = add("purple", 8388736);
+        red = add("red", 16711680);
+        rosyBrown = add("rosy-brown", 12357519);
+        royalBlue = add("royal-blue", 4286945);
+        saddleBrown = add("saddle-brown", 9127187);
+        salmon = add("salmon", 16416882);
+        sandyBrown = add("sandy-brown", 16032864);
+        seaGreen = add("sea-green", 3050327);
+        seaShell = add("sea-shell", 16774638);
+        sienna = add("sienna", 10506797);
+        silver = add("silver", 12632256);
+        skyBlue = add("sky-blue", 8900331);
+        slateBlue = add("slate-blue", 6970061);
+        slateGray = add("slate-gray", 7372944);
+        slateGrey = add("slate-grey", 7372944);
+        snow = add("snow", 16775930);
+        springGreen = add("spring-green", 65407);
+        steelBlue = add("steel-blue", 4620980);
+        tan = add("tan", 13808780);
+        teal = add("teal", 32896);
+        thistle = add("thistle", 14204888);
+        tomato = add("tomato", 16737095);
+        turquoise = add("turquoise", 4251856);
+        violet = add("violet", 15631086);
+        wheat = add("wheat", 16113331);
+        white = add("white", 16777215);
+        whiteSmoke = add("white-smoke", 16119285);
+        yellow = add("yellow", 16776960);
+        yellowGreen = add("yellow-green", 10145074);
+        transparent = add(new StandardColor("transparent", 0, 0, 0, 0));
+    }
+}

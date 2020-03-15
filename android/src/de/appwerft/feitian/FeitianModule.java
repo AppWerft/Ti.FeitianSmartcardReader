@@ -51,10 +51,7 @@ public class FeitianModule extends KrollModule {
 	public static final int USB_IN = DK.USB_IN;
 	@Kroll.constant
 	public static final int USB_OUT = DK.USB_OUT;
-	@Kroll.constant
-	public static final int CARD_IN_MASK = DK.CARD_IN_MASK;
-	@Kroll.constant
-	public static final int CARD_OUT_MASK = DK.CARD_OUT_MASK;
+	
 	@Kroll.constant
 	public static final int CCIDSCHEME_LOG = DK.CCIDSCHEME_LOG;
 	@Kroll.constant
@@ -77,12 +74,19 @@ public class FeitianModule extends KrollModule {
 	public static final int FTREADER_TYPE_BT3 = DK.FTREADER_TYPE_BT3;
 	@Kroll.constant
 	public static final int FTREADER_TYPE_BT4 = DK.FTREADER_TYPE_BT4;
+	
 	@Kroll.constant
 	public static final int CARD_PRESENT_ACTIVE = DK.CARD_PRESENT_ACTIVE;
 	@Kroll.constant
 	public static final int CARD_PRESENT_INACTIVE = DK.CARD_PRESENT_INACTIVE;
 	@Kroll.constant
 	public static final int CARD_NO_PRESENT = DK.CARD_NO_PRESENT;
+	@Kroll.constant
+	public static final int CARD_IN_MASK = DK.CARD_IN_MASK;
+	@Kroll.constant
+	public static final int CARD_OUT_MASK = DK.CARD_OUT_MASK;
+	@Kroll.constant
+	public static final int POWER_OFF = 42838;
 	@Kroll.constant
 	public static final int READER_R301E = DK.READER_R301E;
 	@Kroll.constant
@@ -120,11 +124,11 @@ public class FeitianModule extends KrollModule {
 	}
 
 	@Kroll.method
-	public FeitianModule readerFind(int type,KrollFunction onChanged) {
+	public FeitianModule readerFind(int type, KrollFunction onChanged) {
 		this.onChanged = onChanged;
 		try {
 			arrayForBlueToothDevice.clear();
-			Log.d(LCAT,"type="+type);
+			Log.d(LCAT, "type=" + type);
 			ftReader = new FTReader(ctx, mHandler, type);
 			if (ftReader != null)
 				ftReader.readerFind();
@@ -260,38 +264,44 @@ public class FeitianModule extends KrollModule {
 			case DK.BT4_NEW:
 				BluetoothDevice dev = (BluetoothDevice) msg.obj;
 				event.put("type", msg.what == DK.BT3_NEW ? "BT" : "BLE");
-
 				devicefound = true;
-				Log.d(LCAT, "device found try open " + dev.getName());
-
 				arrayForBlueToothDevice.add(dev);
-
 				break;
 			case DK.BT4_ACL_DISCONNECTED:
 				BluetoothDevice dev3 = (BluetoothDevice) msg.obj;
 				break;
 			default:
-				KrollDict res = new KrollDict();
-				if (  (msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK ||(msg.what & DK.CARD_OUT_MASK) == DK.CARD_OUT_MASK ) {
+				Log.d(LCAT, "what=" + msg.what);
+				if ((msg.what & DK.CARD_IN_MASK) == DK.CARD_IN_MASK
+						|| (msg.what & DK.CARD_OUT_MASK) == DK.CARD_OUT_MASK) {
+					Log.d(LCAT, "Slot changed");
 					try {
-						res.put("status", ftReader.readerGetSlotStatus(0));
+						event.put("status", ftReader.readerGetSlotStatus(0));
 						onChanged.callAsync(getKrollObject(), event);
 						return;
 					} catch (FTException e) {
-						// TODO Auto-generated catch block
+						Log.e(LCAT, e.getMessage());
 						e.printStackTrace();
 					}
 
 					return;
-				} 
+				}
 				break;
 			}
 
 			if (devicefound && onChanged != null) {
-
-				KrollFunction onFound = (KrollFunction) (getProperty("onFound"));
+				BluetoothDevice device = arrayForBlueToothDevice.get(0);
+				Log.d(LCAT, "device found try open " + device.getName());
+				String[] devices = null;
 				try {
-					String[] devices = ftReader.readerOpen(arrayForBlueToothDevice.get(0));
+					devices = ftReader.readerOpen(device);
+				} catch (FTException e1) {
+					event.put("status", POWER_OFF);
+					Log.w(LCAT,e1.getMessage());
+					onChanged.callAsync(getKrollObject(), event);
+					return;
+				}
+				try {
 					event.put("devices", devices);
 					byte[] atr = ftReader.readerPowerOn(0);
 					event.put("atr", Utility.bytes2HexStr(atr));
@@ -301,9 +311,7 @@ public class FeitianModule extends KrollModule {
 					e.printStackTrace();
 				}
 
-			} else
-				Log.w(LCAT, "onFound != KrollFunction");
-
+			}
 		}
 	};
 
@@ -334,3 +342,5 @@ public class FeitianModule extends KrollModule {
 	}
 
 }
+
+

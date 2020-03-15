@@ -5,19 +5,23 @@ import java.nio.ByteBuffer;
 import com.ftsafe.Utility;
 
 public class APDU {
-	public static final String SELECT_MF = "00A4040C07D2760001448000";
-	public static final String SELECT_HCA = "00A4040C06D27600000102";
-	public static final String EF_VERSION_1 = "00B2018400";
-	public static final String EF_VERSION_2 = "00B2028400";
-	public static final String EF_VERSION_3 = "00B2038400";
-	public static final String SELECT_FILE_PD = "00B0810002";
-	public static final String SELECT_FILE_VD = "00B0820008";
 	
-	public static final String READ_PD = "00B08100000000";
+	public static final String RESET_CT = 		"2011000000";
+	public static final String REQUEST_ICC1 =	"201201000101";
+	public static final String EJECT_ICC1   =   "201501000101";
 	
-	public static final String AUTOPOWEROFF_OFF = "A55A8031";
-	public static final String AUTOPOWEROFF_ON = "A55A8030";
+	public static final String SELECT_MF =      "00 A4 04 0C 07 D2 76 00 01 44 80 00"; // select
+	public static final String SELECT_HCA =     "00 A4 04 0C 06 D2 76 00 00 01 02";   // select
+	public static final String EF_VERSION_1 =   "00 B2 01 84 00";  // read record
+	public static final String EF_VERSION_2 =   "00 B2 02 84 00";  // read record
+	public static final String EF_VERSION_3 =   "00 B2 03 84 00";  // read record
+	public static final String SELECT_FILE_PD = "00 B0 81 00 02";  // read binary
+	public static final String SELECT_FILE_VD = "00 B0 82 00 08";  // read binary
 	
+	public static final String READ_PD_MOBIL = 	"00 B0 81 00 00 00 00"; // read binary
+	public static final String READ_PD_STAT  =  "00 B0 00 02 00";
+	
+		
 	public static byte[] getCmd(String cmd) {
 		return hexStringToBytes(cmd);
 	}
@@ -36,7 +40,7 @@ public class APDU {
 		if (hexString == null || hexString.equals("")) {
 			return null;
 		}
-		hexString = hexString.toUpperCase();
+		hexString = hexString.toUpperCase().replaceAll("\\s+","");
 		int length = hexString.length() / 2;
 		char[] hexChars = hexString.toCharArray();
 		byte[] d = new byte[length];
