@@ -75,7 +75,7 @@ public class HealthCardAsyncAdapter extends AsyncTask<Void, Void, byte[]> {
 
 	private byte[] transmit(byte[] apdu, String comment) throws FTException {
 			Log.d(LCAT, "SEND: " + Utility.bytes2HexStr(apdu) + "  ("+comment+")");
-			byte[] res = ftReader.readerXfr(0, apdu);
+			byte[] res = ftReader.readerEscape(0, apdu);
 			Log.d(LCAT, "RCV: " + Utility.bytes2HexStr(res));
 			return res;
 	}
