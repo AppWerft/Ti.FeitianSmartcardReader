@@ -27,6 +27,7 @@ import sasc.util.Util;
 import org.appcelerator.titanium.TiApplication;
 
 import android.content.Context;
+import de.appwerft.feitian.FeitianModule;
 
 
 /**
@@ -44,6 +45,7 @@ public class ATR_DB {
     private static final Map<String, PublicATR> atrMap = new ConcurrentHashMap<String, PublicATR>();
     private static final AtomicBoolean initCalled = new AtomicBoolean(false);
     Context ctx = TiApplication.getInstance().getApplicationContext();
+    private String LCAT= FeitianModule.LCAT;
 	public synchronized static void initialize() {
         if(initCalled.getAndSet(true)){
             return;
@@ -60,7 +62,7 @@ public class ATR_DB {
                         is1 = ATR_DB.class.getResourceAsStream("/smartcard_list.txt");
                    //     is2 = Util.loadResource(ATR_DB.class, "/smartcard_list_additional_atrs.txt");
                         br = new BufferedReader(new InputStreamReader(new SequenceInputStream(is1, is2), "UTF-8"));
-
+                        Log.d(LCAT,"read DB");
                         int lineNumber = 0;
                         String line;
                         String currentATR = null;

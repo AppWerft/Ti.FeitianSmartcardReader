@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.appcelerator.kroll.common.Log;
 
+import de.appwerft.feitian.FeitianModule;
 import sasc.lookup.ATR_DB;
 
 import sasc.util.Util;
@@ -52,6 +53,7 @@ public class ATR {
     private IsoATR isoATR = null;
     private boolean isIsoCompliant = false;
     private String errorMsg = "";
+    private String LCAT= FeitianModule.LCAT;
 
     public ATR(byte[] atrBytes){
         this.atrBytes = atrBytes;
@@ -59,7 +61,9 @@ public class ATR {
         try{
             isoATR = IsoATR.parse(atrBytes);
             isIsoCompliant = true;
+            Log.d(LCAT,"isIsoCompliant");
         }catch(IsoATR.ParseException ex){
+        	 Log.e(LCAT,ex.getMessage());
             errorMsg = ex.getMessage();
         }
 
@@ -107,10 +111,10 @@ public class ATR {
     }
     
     public void dump(){
-        Log.d("TiFeitian","Answer To Reset (ATR)");
+        Log.d(LCAT,"Answer To Reset (ATR)");
         String indentStr = "\t  ";
         List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
-        Log.d("TiFeitian",Util.prettyPrintHexNoWrap(atrBytes));
+        Log.d(LCAT,Util.prettyPrintHexNoWrap(atrBytes));
         if(descriptiveText != null){
             //Just use List/ArrayList.toString(), which prints [value1, value2] according to Javadoc API
         	Log.d("TiFeitian","Description From Public Database - "+descriptiveText);
