@@ -62,7 +62,7 @@ public class ATR_DB {
                     try{
                         is1 = ATR_DB.class.getResourceAsStream("/smartcard_list.txt");
                    //     is2 = Util.loadResource(ATR_DB.class, "/smartcard_list_additional_atrs.txt");
-                        br = new BufferedReader(new InputStreamReader(new SequenceInputStream(is1, is2), "UTF-8"));
+                        br = new BufferedReader(new InputStreamReader(is1, "UTF-8"));
                         Log.d("TiF","read DB");
                         int lineNumber = 0;
                         String line;
