@@ -6,25 +6,25 @@ import com.ftsafe.Utility;
 
 public class APDU {
 	
-	public static final String RESET_CT = 					"20 11 00 00 00";
-	public static final String REQUEST_ICC1 =				"20 12 01 00 01 01";
-	public static final String EJECT_ICC1   =   			"20 15 01 00 01 01";
+	public static final String RESET_CT = 					"20 11 00 00   00";
+	public static final String REQUEST_ICC1 =				"20 12 01 00   01 01";
+	public static final String EJECT_ICC1   =   			"20 15 01 00   01 01";
 	
-	public static final String SELECT_MF =      			"00 A4 04 0C 07 D2 76 00 01 44 80 00"; // select
-	public static final String SELECT_HCA =     			"00 A4 04 0C 06 D2 76 00 00 01 02";   // select
+	public static final String SELECT_MF =      			"00 A4 04 0C   07 D2 76 00 01 44 80 00"; // select
+	public static final String SELECT_HCA =     			"00 A4 04 0C   06 D2 76 00 00 01 02";   // select
 	
-	public static final String READ_BINARY_EF_STATUSVD =    "00 B0 8C 00 00";   
+	public static final String READ_BINARY_EF_STATUSVD =    "00 B0 8C 00   00";   
 	
-	public static final String EF_VERSION_1 =   			"00 B2 01 84 00";  // read record
-	public static final String EF_VERSION_2 =   			"00 B2 02 84 00";  // read record
-	public static final String EF_VERSION_3 =  				"00 B2 03 84 00";  // read record
-	public static final String SELECT_FILE_PD =				"00 B0 81 00 02";  // read binary
-	public static final String SELECT_FILE_VD = 			"00 B0 82 00 08";  // read binary
+	public static final String EF_VERSION_1 =   			"00 B2 01 84   00";  // read record
+	public static final String EF_VERSION_2 =   			"00 B2 02 84   00";  // read record
+	public static final String EF_VERSION_3 =  				"00 B2 03 84   00";  // read record
+	public static final String SELECT_FILE_PD =				"00 B0 81 00   02";  // read binary
+	public static final String SELECT_FILE_VD = 			"00 B0 82 00   08";  // read binary
 	
-	public static final String READ_PD_MOBILE = 			"00 B0 81 00 00 00 00"; // read binary
-	public static final String READ_PD_STAT  =  			"00 B0 00 02 00";
+	public static final String READ_PD_MOBILE = 			"00 B0 81 00   00 00 00"; // read binary
+	public static final String READ_PD_STAT  =  			"00 B0 00 02   00";
 	
-	public static final String GET_STATUS    =  			"20 13 00 46 00"; 
+	public static final String GET_STATUS    =  			"20 13 00 46   00"; 
 	
 		
 	public static byte[] getCmd(String cmd) {
