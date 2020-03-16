@@ -30,6 +30,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
+import sasc.iso7816.ATR;
 
 @Kroll.module(name = "Feitian", id = "de.appwerft.feitian", propertyAccessors = { "onFound", "onConnect", "onError" })
 public class FeitianModule extends KrollModule {
@@ -306,11 +307,8 @@ public class FeitianModule extends KrollModule {
 				try {
 					event.put("devices", devices);
 					byte[] atrdata = ftReader.readerPowerOn(0);
-					 
-					
-					ATR atr
-					
-					
+					ATR atr = new ATR(atrdata);
+					atr.dump();
 					event.put("atr", Utility.bytes2HexStr(atrdata));
 					event.put("status", ftReader.readerGetSlotStatus(0));
 					onChanged.callAsync(getKrollObject(), event);
