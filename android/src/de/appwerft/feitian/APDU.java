@@ -6,9 +6,9 @@ import com.ftsafe.Utility;
 
 public class APDU {
 	
-	public static final String RESET_CT = 		"2011000000";
-	public static final String REQUEST_ICC1 =	"201201000101";
-	public static final String EJECT_ICC1   =   "201501000101";
+	public static final String RESET_CT = 		"20 11 00 00 00";
+	public static final String REQUEST_ICC1 =	"20 12 01 00 01 01";
+	public static final String EJECT_ICC1   =   "20 15 01 00 01 01";
 	
 	public static final String SELECT_MF =      "00 A4 04 0C 07 D2 76 00 01 44 80 00"; // select
 	public static final String SELECT_HCA =     "00 A4 04 0C 06 D2 76 00 00 01 02";   // select
@@ -20,6 +20,8 @@ public class APDU {
 	
 	public static final String READ_PD_MOBILE = "00 B0 81 00 00 00 00"; // read binary
 	public static final String READ_PD_STAT  =  "00 B0 00 02 00";
+	
+	public static final String GET_STATUS    =  "20 13 00 46 00"; 
 	
 		
 	public static byte[] getCmd(String cmd) {
