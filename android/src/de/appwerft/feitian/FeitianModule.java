@@ -233,8 +233,9 @@ public class FeitianModule extends KrollModule {
 
 	@Kroll.method
 	public KrollDict parseATR(String atrdata) {
-		ATR atr = new ATR(Utility.hexStrToBytes(atrdata));
-		return atr.dump();
+		//ATR atr = new ATR(Utility.hexStrToBytes(atrdata));
+		//return atr.dump();
+		return null;
 	}
 
 	@Kroll.method
