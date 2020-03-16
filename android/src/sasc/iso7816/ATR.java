@@ -88,15 +88,14 @@ public class ATR {
  
     public KrollDict dump(){
     	KrollDict res = new KrollDict();
-    	
         Log.d(LCAT,"Answer To Reset (ATR)");
+        ATR_DB.initialize();
         List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
         if(descriptiveText != null){
         	res.put("descriptiveText", ATR_DB.searchATR(atrBytes).toArray());
         }
         if(isIsoCompliant()){
             isoATR.dump(res);
-        }else{
         }
         Log.d(LCAT,res.toString());
         return res;
