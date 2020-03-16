@@ -20,6 +20,10 @@ package sasc.iso7816;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
+
+import org.appcelerator.kroll.common.Log;
+
+import de.appwerft.feitian.FeitianModule;
 import sasc.util.Util;
 
 /**
@@ -31,6 +35,7 @@ public class IsoATR {
     private Protocol protocol = Protocol.T_0;
     private Convention convention;
     private int numHistoricalBytes = 0;
+    private String LCAT= FeitianModule.LCAT;
 
 
     //TODO
@@ -141,6 +146,15 @@ public class IsoATR {
 
         if(numHistoricalBytes > 0){
             pw.println(indentStr+"Historical bytes - "+Util.prettyPrintHex(Util.byteArrayToHexString(getHistoricalBytes())));
+        }
+
+    }
+    public void dump(){
+        Log.d(LCAT,"Convention - "+convention);
+        Log.d(LCAT,"Protocol - "+protocol);
+
+        if(numHistoricalBytes > 0){
+        	Log.d(LCAT,"Historical bytes - "+Util.prettyPrintHex(Util.byteArrayToHexString(getHistoricalBytes())));
         }
 
     }

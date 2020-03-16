@@ -122,7 +122,7 @@ public class ATR {
         }
 
         if(isIsoCompliant()){
-        	//Log.d("TiFeitian",isoATR.dump(pw, 4);
+        	isoATR.dump();
         }else{
             //pw.println(indentStr+"ATR is not ISO compliant ("+errorMsg+")");
         }
