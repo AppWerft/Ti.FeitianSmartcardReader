@@ -46,13 +46,13 @@ public class ATR_DB {
     private static final Map<String, PublicATR> atrMap = new ConcurrentHashMap<String, PublicATR>();
     private static final AtomicBoolean initCalled = new AtomicBoolean(false);
     Context ctx = TiApplication.getInstance().getApplicationContext();
-    public String LCAT= FeitianModule.LCAT;
+    public static final String LCAT = FeitianModule.LCAT;
 	public synchronized static void initialize() {
-       
+        Log.d(LCAT,"init DB");
 		new Thread(new Runnable(){
 				@Override
 				public void run() {
-
+					Log.d(LCAT,"init DB new thread");
                     InputStream is1 = null;
                     InputStream is2 = null;
                     BufferedReader br = null;
