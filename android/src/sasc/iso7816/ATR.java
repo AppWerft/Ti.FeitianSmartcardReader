@@ -85,38 +85,11 @@ public class ATR {
     public byte[] getBytes(){
         return atrBytes;
     }
-
-    @Override
-    public String toString(){
-        StringWriter sw = new StringWriter();
-        dump(new PrintWriter(sw), 0);
-        return sw.toString();
-    }
-
-    public void dump(PrintWriter pw, int indent){
-    	ATR_DB.initialize();
-        pw.println(Util.getSpaces(indent)+"Answer To Reset (ATR)");
-        String indentStr = "\t  ";
-        List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
-        pw.println(indentStr+Util.prettyPrintHexNoWrap(atrBytes));
-        if(descriptiveText != null){
-            //Just use List/ArrayList.toString(), which prints [value1, value2] according to Javadoc API
-            pw.println(indentStr+"Description From Public Database - "+descriptiveText);
-        }
-
-        if(isIsoCompliant()){
-            isoATR.dump(pw, 4);
-        }else{
-            //pw.println(indentStr+"ATR is not ISO compliant ("+errorMsg+")");
-        }
-
-    }
-    
+ 
     public KrollDict dump(){
     	KrollDict res = new KrollDict();
     	
         Log.d(LCAT,"Answer To Reset (ATR)");
-        String indentStr = "\t  ";
         List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
         if(descriptiveText != null){
         	res.put("descriptiveText", ATR_DB.searchATR(atrBytes).toArray());
@@ -124,16 +97,9 @@ public class ATR {
         if(isIsoCompliant()){
             isoATR.dump(res);
         }else{
-            //pw.println(indentStr+"ATR is not ISO compliant ("+errorMsg+")");
         }
+        Log.d(LCAT,res.toString());
         return res;
     }
 
-    public static void main(String[] args){
-        System.out.println(new ATR(Util.fromHexString("3F 24 00 30 42 30 30")));
-        System.out.println(new ATR(Util.fromHexString("3A 00"))); //Invalid convention
-        System.out.println(new ATR(Util.fromHexString("3B 20"))); //Missing interface characters
-        System.out.println(new ATR(Util.fromHexString("3B 34 00 00"))); //No historical bytes
-        System.out.println(new ATR(Util.fromHexString("3B 80 01"))); //TCK not present
-    }
 }
