@@ -19,6 +19,9 @@ import sasc.iso7816.IsoATR;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
+
+import org.appcelerator.kroll.common.Log;
+
 import sasc.lookup.ATR_DB;
 
 import sasc.util.Util;
@@ -97,6 +100,24 @@ public class ATR {
 
         if(isIsoCompliant()){
             isoATR.dump(pw, 4);
+        }else{
+            //pw.println(indentStr+"ATR is not ISO compliant ("+errorMsg+")");
+        }
+
+    }
+    
+    public void dump(){
+        Log.d("TiFeitian","Answer To Reset (ATR)");
+        String indentStr = "\t  ";
+        List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
+        Log.d("TiFeitian",Util.prettyPrintHexNoWrap(atrBytes));
+        if(descriptiveText != null){
+            //Just use List/ArrayList.toString(), which prints [value1, value2] according to Javadoc API
+        	Log.d("TiFeitian","Description From Public Database - "+descriptiveText);
+        }
+
+        if(isIsoCompliant()){
+        	//Log.d("TiFeitian",isoATR.dump(pw, 4);
         }else{
             //pw.println(indentStr+"ATR is not ISO compliant ("+errorMsg+")");
         }

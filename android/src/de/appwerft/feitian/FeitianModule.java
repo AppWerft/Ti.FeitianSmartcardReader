@@ -224,6 +224,8 @@ public class FeitianModule extends KrollModule {
 		}
 
 	}
+	
+	
 
 	@Kroll.method
 	public boolean powerOff() {
@@ -303,8 +305,13 @@ public class FeitianModule extends KrollModule {
 				}
 				try {
 					event.put("devices", devices);
-					byte[] atr = ftReader.readerPowerOn(0);
-					event.put("atr", Utility.bytes2HexStr(atr));
+					byte[] atrdata = ftReader.readerPowerOn(0);
+					 
+					
+					ATR atr
+					
+					
+					event.put("atr", Utility.bytes2HexStr(atrdata));
 					event.put("status", ftReader.readerGetSlotStatus(0));
 					onChanged.callAsync(getKrollObject(), event);
 				} catch (FTException e) {
