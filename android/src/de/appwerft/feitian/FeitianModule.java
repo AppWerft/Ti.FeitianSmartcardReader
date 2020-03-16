@@ -220,8 +220,8 @@ public class FeitianModule extends KrollModule {
 		try {
 			byte[] atrdata = ftReader.readerPowerOn(0);
 			Log.d(LCAT, Utility.bytes2HexStr(atrdata));
-			ATR atr = new ATR(atrdata);
-			atr.dump();
+			//ATR atr = new ATR(atrdata);
+			//atr.dump();
 			return Utility.bytes2HexStr(atrdata);
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
