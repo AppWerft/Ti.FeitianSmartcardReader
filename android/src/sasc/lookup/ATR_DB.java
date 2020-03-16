@@ -48,9 +48,7 @@ public class ATR_DB {
     Context ctx = TiApplication.getInstance().getApplicationContext();
     public String LCAT= FeitianModule.LCAT;
 	public synchronized static void initialize() {
-        if(initCalled.getAndSet(true)){
-            return;
-        }
+       
 		new Thread(new Runnable(){
 				@Override
 				public void run() {

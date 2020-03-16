@@ -20,6 +20,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
 
+import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.common.Log;
 
 import de.appwerft.feitian.FeitianModule;
@@ -111,22 +112,21 @@ public class ATR {
 
     }
     
-    public void dump(){
+    public KrollDict dump(){
+    	KrollDict res = new KrollDict();
+    	
         Log.d(LCAT,"Answer To Reset (ATR)");
         String indentStr = "\t  ";
         List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
-        Log.d(LCAT,Util.prettyPrintHexNoWrap(atrBytes));
         if(descriptiveText != null){
-            //Just use List/ArrayList.toString(), which prints [value1, value2] according to Javadoc API
-        	Log.d("TiFeitian","Description From Public Database - "+descriptiveText);
+        	res.put("descriptiveText", ATR_DB.searchATR(atrBytes).toArray());
         }
-
         if(isIsoCompliant()){
-        	isoATR.dump();
+            isoATR.dump(res);
         }else{
             //pw.println(indentStr+"ATR is not ISO compliant ("+errorMsg+")");
         }
-
+        return res;
     }
 
     public static void main(String[] args){
