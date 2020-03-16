@@ -298,6 +298,7 @@ public class FeitianModule extends KrollModule {
 				String[] devices = null;
 				try {
 					devices = ftReader.readerOpen(device);
+					Log.w(LCAT,"sucessful connected");
 				} catch (FTException e1) {
 					event.put("status", POWER_OFF);
 					Log.w(LCAT,e1.getMessage());
@@ -305,8 +306,10 @@ public class FeitianModule extends KrollModule {
 					return;
 				}
 				try {
+					Log.d(LCAT,"readerPowerOn");
 					event.put("devices", devices);
 					byte[] atrdata = ftReader.readerPowerOn(0);
+					Log.d(LCAT,Utility.bytes2HexStr(atrdata));
 					ATR atr = new ATR(atrdata);
 					atr.dump();
 					event.put("atr", Utility.bytes2HexStr(atrdata));
