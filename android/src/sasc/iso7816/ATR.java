@@ -58,7 +58,6 @@ public class ATR {
             isIsoCompliant = true;
         }catch(IsoATR.ParseException ex){
             errorMsg = ex.getMessage();
-            Log.debug(ex.getMessage());
         }
 
     }
@@ -88,7 +87,7 @@ public class ATR {
 
     public void dump(PrintWriter pw, int indent){
         pw.println(Util.getSpaces(indent)+"Answer To Reset (ATR)");
-        String indentStr = Util.getSpaces(indent+Log.INDENT_SIZE);
+        String indentStr = "\t  ";
         List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
         pw.println(indentStr+Util.prettyPrintHexNoWrap(atrBytes));
         if(descriptiveText != null){
@@ -97,7 +96,7 @@ public class ATR {
         }
 
         if(isIsoCompliant()){
-            isoATR.dump(pw, indent+Log.INDENT_SIZE);
+            isoATR.dump(pw, 4);
         }else{
             //pw.println(indentStr+"ATR is not ISO compliant ("+errorMsg+")");
         }
