@@ -163,7 +163,7 @@ public class ATR_DB {
     }
 
     public static List<String> searchATR(byte[] atr){
-        awaitInit();
+        //awaitInit();
         String atrStr = Util.prettyPrintHexNoWrap(atr).toUpperCase();
         for(String atrPatternStr : atrMap.keySet()){
             if(atrStr.matches("^"+atrPatternStr+"$")){
@@ -178,9 +178,9 @@ public class ATR_DB {
 
     public static void main(String[] args){
         initialize();
-        System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x90, (byte)0x95, (byte)0x80, (byte)0x1F, (byte)0xC3, (byte)0x59}));
-        System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x04, (byte)0xA2, (byte)0x13, (byte)0x10, (byte)0x91}));
-        System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x67, (byte)0x00, (byte)0x00, (byte)0xa6, (byte)0x40, (byte)0x40, (byte)0x00, (byte)0x09, (byte)0x90, (byte)0x00}));
-        System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x24, (byte)0x00, (byte)0x01, (byte)0x02, (byte)0x03, (byte)0x45}));
+       // System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x90, (byte)0x95, (byte)0x80, (byte)0x1F, (byte)0xC3, (byte)0x59}));
+       // System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x04, (byte)0xA2, (byte)0x13, (byte)0x10, (byte)0x91}));
+       // System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x67, (byte)0x00, (byte)0x00, (byte)0xa6, (byte)0x40, (byte)0x40, (byte)0x00, (byte)0x09, (byte)0x90, (byte)0x00}));
+       // System.out.println(ATR_DB.searchATR(new byte[]{(byte)0x3B, (byte)0x24, (byte)0x00, (byte)0x01, (byte)0x02, (byte)0x03, (byte)0x45}));
     }
 }
