@@ -52,7 +52,7 @@ public class FeitianModule extends KrollModule {
 	public static final int USB_IN = DK.USB_IN;
 	@Kroll.constant
 	public static final int USB_OUT = DK.USB_OUT;
-	
+
 	@Kroll.constant
 	public static final int CCIDSCHEME_LOG = DK.CCIDSCHEME_LOG;
 	@Kroll.constant
@@ -75,7 +75,7 @@ public class FeitianModule extends KrollModule {
 	public static final int FTREADER_TYPE_BT3 = DK.FTREADER_TYPE_BT3;
 	@Kroll.constant
 	public static final int FTREADER_TYPE_BT4 = DK.FTREADER_TYPE_BT4;
-	
+
 	@Kroll.constant
 	public static final int CARD_PRESENT_ACTIVE = DK.CARD_PRESENT_ACTIVE;
 	@Kroll.constant
@@ -200,7 +200,8 @@ public class FeitianModule extends KrollModule {
 	public void getHealthCard(boolean mobile, Object o) {
 		if (o instanceof KrollFunction)
 			onRecv = (KrollFunction) o;
-		AsyncTask<Void, Void, byte[]> doRequest = new HealthCardAsyncAdapter(getKrollObject(), onRecv, ftReader,mobile);
+		AsyncTask<Void, Void, byte[]> doRequest = new HealthCardAsyncAdapter(getKrollObject(), onRecv, ftReader,
+				mobile);
 		doRequest.execute();
 	}
 
@@ -218,7 +219,7 @@ public class FeitianModule extends KrollModule {
 	public String powerOn() {
 		try {
 			byte[] atrdata = ftReader.readerPowerOn(0);
-			Log.d(LCAT,Utility.bytes2HexStr(atrdata));
+			Log.d(LCAT, Utility.bytes2HexStr(atrdata));
 			ATR atr = new ATR(atrdata);
 			atr.dump();
 			return Utility.bytes2HexStr(atrdata);
@@ -229,8 +230,13 @@ public class FeitianModule extends KrollModule {
 		}
 
 	}
-	
-	
+
+	@Kroll.method
+	public String parseATR(String atrdata) {
+		ATR atr = new ATR(Utility.hexStrToBytes(atrdata));
+		atr.dump();
+		return null;
+	}
 
 	@Kroll.method
 	public boolean powerOff() {
@@ -302,18 +308,18 @@ public class FeitianModule extends KrollModule {
 				String[] devices = null;
 				try {
 					devices = ftReader.readerOpen(device);
-					Log.w(LCAT,"sucessful connected");
+					Log.w(LCAT, "sucessful connected");
 				} catch (FTException e1) {
 					event.put("status", POWER_OFF);
-					Log.w(LCAT,e1.getMessage());
+					Log.w(LCAT, e1.getMessage());
 					onChanged.callAsync(getKrollObject(), event);
 					return;
 				}
 				try {
-					Log.d(LCAT,"readerPowerOn");
+					Log.d(LCAT, "readerPowerOn");
 					event.put("devices", devices);
 					byte[] atrdata = ftReader.readerPowerOn(0);
-					Log.d(LCAT,Utility.bytes2HexStr(atrdata));
+					Log.d(LCAT, Utility.bytes2HexStr(atrdata));
 					ATR atr = new ATR(atrdata);
 					atr.dump();
 					event.put("atr", Utility.bytes2HexStr(atrdata));
@@ -354,5 +360,3 @@ public class FeitianModule extends KrollModule {
 	}
 
 }
-
-
