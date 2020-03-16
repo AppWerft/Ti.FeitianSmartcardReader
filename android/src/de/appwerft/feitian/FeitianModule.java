@@ -320,8 +320,8 @@ public class FeitianModule extends KrollModule {
 					event.put("devices", devices);
 					byte[] atrdata = ftReader.readerPowerOn(0);
 					Log.d(LCAT, Utility.bytes2HexStr(atrdata));
-					ATR atr = new ATR(atrdata);
-					atr.dump();
+					//ATR atr = new ATR(atrdata);
+					//atr.dump();
 					event.put("atr", Utility.bytes2HexStr(atrdata));
 					event.put("status", ftReader.readerGetSlotStatus(0));
 					onChanged.callAsync(getKrollObject(), event);
