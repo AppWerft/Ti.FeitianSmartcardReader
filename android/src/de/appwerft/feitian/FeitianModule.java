@@ -217,7 +217,10 @@ public class FeitianModule extends KrollModule {
 	@Kroll.method
 	public String powerOn() {
 		try {
-			return Utility.bytes2HexStr(ftReader.readerPowerOn(0));
+			byte[] atrdata = ftReader.readerPowerOn(0);
+			ATR atr = new ATR(atrdata);
+			atr.dump();
+			return Utility.bytes2HexStr(atrdata);
 		} catch (FTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
