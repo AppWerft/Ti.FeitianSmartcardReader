@@ -93,6 +93,7 @@ public class ATR {
     }
 
     public void dump(PrintWriter pw, int indent){
+    	ATR_DB.initialize();
         pw.println(Util.getSpaces(indent)+"Answer To Reset (ATR)");
         String indentStr = "\t  ";
         List<String> descriptiveText = ATR_DB.searchATR(atrBytes);
